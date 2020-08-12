@@ -5,7 +5,6 @@ import okhttp3.Interceptor
 import okhttp3.Response
 
 class BasicAuthentication : Interceptor {
-    //private val credentials = Credentials.basic(username = userName, password = password)
 
     private var userName = ""
     private var password = ""
@@ -13,8 +12,6 @@ class BasicAuthentication : Interceptor {
     fun createCredentials(userName: String, password: String) {
         this.userName = userName
         this.password = password
-
-        //return Credentials.basic(username = userName, password = password)
     }
 
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -24,4 +21,7 @@ class BasicAuthentication : Interceptor {
             .build()
         return chain.proceed(request)
     }
+
+    //fmanuela499@gmail.com
+    //yld9o0tWcUioCNgDVq9663E0
 }

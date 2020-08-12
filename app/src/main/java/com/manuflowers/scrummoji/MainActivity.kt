@@ -7,17 +7,11 @@ import android.os.Bundle
 import android.util.Log
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.manuflowers.scrummoji.data.network.buildApiService
-import com.manuflowers.scrummoji.repository.JiraRepositoryImpl
 import com.manuflowers.scrummoji.ui.login.JiraLoginActivity
 import com.manuflowers.scrummoji.ui.login.RoomLoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-
-
 
     val database = Firebase.firestore
 

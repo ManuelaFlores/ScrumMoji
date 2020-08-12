@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/sprintTextView"
+    android:layout_height="80dp"
+    android:gravity="center_vertical"
+    android:padding="8dp"
+    android:background="?attr/selectableItemBackground"
+    android:textSize="24sp"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:text="Sprint 1" />

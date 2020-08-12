@@ -8,12 +8,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 class ApiFactory {
 
-    fun buildApiJiraService(userName: String, password: String): JiraApi = buildRetrofit(
-        userName = userName,
-        password = password
-    ).create(JiraApi::class.java)
-
-    fun buildApiJiraService2(interceptor: Interceptor): JiraApi =
+    fun buildApiJiraService(interceptor: Interceptor): JiraApi =
         buildRetrofit(buildClient(interceptor), BASE_URL).create(JiraApi::class.java)
 
     private fun buildRetrofit(client: OkHttpClient, baseUrl: String): Retrofit {

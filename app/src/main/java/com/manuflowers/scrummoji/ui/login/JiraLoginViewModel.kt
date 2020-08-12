@@ -1,10 +1,17 @@
 package com.manuflowers.scrummoji.ui.login
 
-import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.manuflowers.scrummoji.data.model.Failure
+import com.manuflowers.scrummoji.data.model.Success
 import com.manuflowers.scrummoji.data.network.BasicAuthentication
 import com.manuflowers.scrummoji.repository.JiraRepositoryImpl
+import com.manuflowers.scrummoji.ui.login.viewstate.JiraLogin
+import com.manuflowers.scrummoji.ui.login.viewstate.JiraLoginError
+import com.manuflowers.scrummoji.ui.login.viewstate.JiraLoginSuccess
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class JiraLoginViewModel(
@@ -12,11 +19,27 @@ class JiraLoginViewModel(
     private val basicAuthentication: BasicAuthentication
 ) : ViewModel() {
 
+    private val jiraDataMutableLiveData = MutableLiveData<JiraLogin>()
+    val jiraLiveData: LiveData<JiraLogin>
+        get() = jiraDataMutableLiveData
+
     fun loginUser(userName: String, password: String) {
         viewModelScope.launch {
             basicAuthentication.createCredentials(userName, password)
-            val response = repository.getSprints(basicAuthentication).values
-            Log.e("ERRORRRRR", response.toString())
+            when (val response = repository.getSprints(basicAuthentication)) {
+                is Success -> {
+                    response.data.collect {
+                        jiraDataMutableLiveData.postValue(JiraLoginSuccess(it))
+                    }
+                }
+                is Failure -> {
+                    jiraDataMutableLiveData.postValue(
+                        JiraLoginError(
+                            response.error.localizedMessage ?: ""
+                        )
+                    )
+                }
+            }
         }
     }
 }

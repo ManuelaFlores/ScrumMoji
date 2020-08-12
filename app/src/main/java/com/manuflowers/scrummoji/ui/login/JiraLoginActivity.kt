@@ -1,33 +1,41 @@
 package com.manuflowers.scrummoji.ui.login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.lifecycle.Observer
 import com.manuflowers.scrummoji.R
-import com.manuflowers.scrummoji.data.network.buildApiService
-import com.manuflowers.scrummoji.repository.JiraRepositoryImpl
+import com.manuflowers.scrummoji.ui.login.viewstate.JiraLoginError
+import com.manuflowers.scrummoji.ui.login.viewstate.JiraLoginSuccess
+import com.manuflowers.scrummoji.ui.sprintsFeed.SprintsFeedActivity
+import com.manuflowers.scrummoji.utils.toast
 import kotlinx.android.synthetic.main.activity_jira_login.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class JiraLoginActivity : AppCompatActivity() {
 
     private val viewModel: JiraLoginViewModel by inject()
 
-    //private val jiraRepositoryImpl = JiraRepositoryImpl(buildApiService())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jira_login)
-        //prueba()
         setupListeners()
+        setupObservers()
     }
 
-    private fun prueba() {
-        GlobalScope.launch {
-            //val response = jiraRepositoryImpl.getSprints()
-            //Log.e("RESPONSE", "${response.values}")
-        }
+    private fun setupObservers() {
+        viewModel.jiraLiveData.observe(this, Observer { jiraLogin ->
+            when (jiraLogin) {
+                is JiraLoginSuccess -> {
+                    val intent = Intent(this, SprintsFeedActivity::class.java)
+                    intent.putExtra(LOGIN_DATA, jiraLogin.data)
+                    startActivity(intent)
+                }
+                is JiraLoginError -> {
+                    this.toast(jiraLogin.error)
+                }
+            }
+        })
     }
 
     private fun setupListeners() {
@@ -37,10 +45,14 @@ class JiraLoginActivity : AppCompatActivity() {
     }
 
     private fun getUserData(): String {
-       return userEditText.text?.trim().toString()
+        return userEditText.text?.trim().toString()
     }
 
     private fun getPasswordData(): String {
         return passwordEditText.text?.trim().toString()
+    }
+
+    companion object {
+        val LOGIN_DATA = "LOGIN_DATA"
     }
 }
