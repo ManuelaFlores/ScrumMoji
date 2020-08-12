@@ -1,4 +1,4 @@
-package com.manuflowers.scrummoji
+package com.manuflowers.scrummoji.data.model
 
 import com.squareup.moshi.Json
 

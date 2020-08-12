@@ -1,5 +1,6 @@
-package com.manuflowers.scrummoji
+package com.manuflowers.scrummoji.data.network
 
+import com.manuflowers.scrummoji.data.model.GetSprintsResponse
 import retrofit2.http.GET
 
 interface JiraApi {
