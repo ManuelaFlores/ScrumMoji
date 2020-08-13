@@ -1,4 +1,4 @@
-package com.manuflowers.scrummoji.ui.sprintsFeed
+package com.manuflowers.scrummoji.ui.sprintsFeed.list
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

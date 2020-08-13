@@ -1,5 +1,6 @@
 package com.manuflowers.scrummoji.data.network
 
+import com.manuflowers.scrummoji.data.model.UserCredential
 import okhttp3.Credentials
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -9,9 +10,9 @@ class BasicAuthentication : Interceptor {
     private var userName = ""
     private var password = ""
 
-    fun createCredentials(userName: String, password: String) {
-        this.userName = userName
-        this.password = password
+    fun createCredentials(userCredential: UserCredential) {
+        this.userName = userCredential.userName
+        this.password = userCredential.password
     }
 
     override fun intercept(chain: Interceptor.Chain): Response {
