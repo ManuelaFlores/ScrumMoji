@@ -24,7 +24,9 @@ class SprintsFeedActivity : AppCompatActivity() {
     private val viewModel: SprintsFeedViewModel by inject()
 
     private val adapter by lazy {
-        SprintsFeedAdapter { viewModel.getSprintStories(it) }
+        SprintsFeedAdapter {
+            viewModel.getSprintStories(it)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

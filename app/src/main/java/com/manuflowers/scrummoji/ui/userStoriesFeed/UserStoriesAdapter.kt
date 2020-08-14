@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.manuflowers.scrummoji.R
 import com.manuflowers.scrummoji.data.model.IssueResponse
+import com.manuflowers.scrummoji.repository.UserStory
 
 class UserStoriesAdapter(
-    private val onUserStorySelected: (storyId: String) -> Unit
+    private val onUserStorySelected: (userStory: UserStory) -> Unit
 ) : RecyclerView.Adapter<UserStoriesViewHolder>(){
     private val userStoriesList = mutableListOf<IssueResponse>()
 
