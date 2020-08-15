@@ -2,4 +2,7 @@
     <string name="app_name">ScrumMoji</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
+    <string name="session_id_v1">Session id: %s</string>
+    <string name="session_id_copied">Session id copied!</string>
+    <string name="create_room">Create room</string>
 </resources>

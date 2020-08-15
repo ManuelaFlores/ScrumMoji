@@ -13,7 +13,7 @@ class FirebaseRepository(
     private val String.getNameOfEmail: String
         get() = this.substringBefore('@')
 
-    fun generateSessionPath() {
+    private fun generateSessionPath() {
         sharedPreferencesManager.saveSessionPath(
             "${sharedPreferencesManager.getUserCredentials().userName.getNameOfEmail}${UUID.randomUUID()}"
         )
@@ -21,6 +21,7 @@ class FirebaseRepository(
 
     fun registerNewSession(onSuccessListener: (sessionPath: String) -> Unit) {
         //FIXME: handle this exception
+        generateSessionPath()
         database
             .child(PATH_SESSIONS)
             .child(sharedPreferencesManager.getSessionPath() ?: "")

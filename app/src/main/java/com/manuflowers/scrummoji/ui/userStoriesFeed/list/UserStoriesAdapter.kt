@@ -1,4 +1,4 @@
-package com.manuflowers.scrummoji.ui.userStoriesFeed
+package com.manuflowers.scrummoji.ui.userStoriesFeed.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -15,7 +15,9 @@ class UserStoriesAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserStoriesViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.sprints_feed_view_holder, parent, false)
-        return UserStoriesViewHolder(view)
+        return UserStoriesViewHolder(
+            view
+        )
     }
 
     override fun getItemCount() = userStoriesList.size

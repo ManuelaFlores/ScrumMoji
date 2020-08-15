@@ -10,33 +10,63 @@
         android:id="@+id/createSessionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Crear sala"
+        android:text="@string/create_room"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/idSessionTextView"
-        android:layout_width="wrap_content"
-        android:visibility="gone"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Id del chat: 12345"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
+        android:padding="16dp"
+        tools:text="Session id: 12345"
         android:textColor="@android:color/black"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/userStoriesFeedRecyclerView"
-        app:layout_constraintEnd_toStartOf="@+id/createSessionButton"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/copyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="invisible"
+        android:background="@drawable/shape_circle_white"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/idSessionTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/idSessionTextView"
+        app:layout_constraintTop_toTopOf="@+id/idSessionTextView"
+        app:srcCompat="@drawable/ic_copy" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/userStoriesFeedRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createSessionButton"
-        tools:layout_editor_absoluteX="-16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.19" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

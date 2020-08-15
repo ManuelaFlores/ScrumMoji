@@ -1,4 +1,4 @@
-package com.manuflowers.scrummoji.ui.userStoriesFeed
+package com.manuflowers.scrummoji.ui.userStoriesFeed.list
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
