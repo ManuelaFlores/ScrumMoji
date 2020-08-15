@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.manuflowers.scrummoji.R
 import com.manuflowers.scrummoji.data.model.GetSprintsResponse
-import com.manuflowers.scrummoji.ui.login.JiraLoginActivity.Companion.LOGIN_DATA
+import com.manuflowers.scrummoji.ui.jiraLogin.JiraLoginActivity.Companion.LOGIN_DATA
 import com.manuflowers.scrummoji.ui.sprintsFeed.list.SprintsFeedAdapter
 import com.manuflowers.scrummoji.ui.sprintsFeed.viewstate.SprintsFeedError
 import com.manuflowers.scrummoji.ui.sprintsFeed.viewstate.SprintsFeedSuccess

@@ -1,8 +1,10 @@
 package com.manuflowers.scrummoji.repository
 
+import android.os.Parcelable
 import android.util.Log
 import com.google.firebase.database.*
 import com.manuflowers.scrummoji.data.local.preferences.SharePreferencesManager
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 class FirebaseRepository(
@@ -50,7 +52,6 @@ class FirebaseRepository(
     }
 
     fun addRealTimeListener() {
-
         val childEventListener = object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
                 Log.d("TAG", "onChildAdded:" + dataSnapshot.key)
@@ -85,8 +86,9 @@ class FirebaseRepository(
     }
 }
 
+@Parcelize
 @IgnoreExtraProperties
 data class UserStory(
     var title: String = "",
     var id: String = ""
-)
+): Parcelable

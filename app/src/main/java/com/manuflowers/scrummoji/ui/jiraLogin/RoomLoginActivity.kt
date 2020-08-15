@@ -1,4 +1,4 @@
-package com.manuflowers.scrummoji.ui.login
+package com.manuflowers.scrummoji.ui.jiraLogin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

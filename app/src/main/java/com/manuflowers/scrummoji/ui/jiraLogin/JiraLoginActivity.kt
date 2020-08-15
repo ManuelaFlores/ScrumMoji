@@ -1,12 +1,12 @@
-package com.manuflowers.scrummoji.ui.login
+package com.manuflowers.scrummoji.ui.jiraLogin
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.manuflowers.scrummoji.R
-import com.manuflowers.scrummoji.ui.login.viewstate.JiraLoginError
-import com.manuflowers.scrummoji.ui.login.viewstate.JiraLoginSuccess
+import com.manuflowers.scrummoji.ui.jiraLogin.viewstate.JiraLoginError
+import com.manuflowers.scrummoji.ui.jiraLogin.viewstate.JiraLoginSuccess
 import com.manuflowers.scrummoji.ui.sprintsFeed.SprintsFeedActivity
 import com.manuflowers.scrummoji.utils.toast
 import kotlinx.android.synthetic.main.activity_jira_login.*

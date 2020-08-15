@@ -1,4 +1,4 @@
-package com.manuflowers.scrummoji.ui.login.viewstate
+package com.manuflowers.scrummoji.ui.jiraLogin.viewstate
 
 import com.manuflowers.scrummoji.data.model.GetSprintsResponse
 

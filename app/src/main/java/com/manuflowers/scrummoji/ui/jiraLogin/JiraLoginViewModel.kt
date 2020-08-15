@@ -1,4 +1,4 @@
-package com.manuflowers.scrummoji.ui.login
+package com.manuflowers.scrummoji.ui.jiraLogin
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,9 +10,9 @@ import com.manuflowers.scrummoji.data.model.UserCredential
 import com.manuflowers.scrummoji.data.network.BasicAuthentication
 import com.manuflowers.scrummoji.repository.JiraRepositoryImpl
 import com.manuflowers.scrummoji.repository.UserRepositoryImpl
-import com.manuflowers.scrummoji.ui.login.viewstate.JiraLogin
-import com.manuflowers.scrummoji.ui.login.viewstate.JiraLoginError
-import com.manuflowers.scrummoji.ui.login.viewstate.JiraLoginSuccess
+import com.manuflowers.scrummoji.ui.jiraLogin.viewstate.JiraLogin
+import com.manuflowers.scrummoji.ui.jiraLogin.viewstate.JiraLoginError
+import com.manuflowers.scrummoji.ui.jiraLogin.viewstate.JiraLoginSuccess
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 

@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.manuflowers.scrummoji.ui.login.JiraLoginActivity
-import com.manuflowers.scrummoji.ui.login.RoomLoginActivity
+import com.manuflowers.scrummoji.ui.jiraLogin.JiraLoginActivity
+import com.manuflowers.scrummoji.ui.jiraLogin.RoomLoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

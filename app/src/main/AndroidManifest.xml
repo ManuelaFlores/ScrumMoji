@@ -16,8 +16,8 @@
         <activity android:name=".ui.storyPointsResults.StoryPointsResultsActivity"></activity>
         <activity android:name=".ui.userStoriesFeed.UserStoriesFeedActivity" />
         <activity android:name=".ui.sprintsFeed.SprintsFeedActivity" />
-        <activity android:name=".ui.login.RoomLoginActivity" />
-        <activity android:name=".ui.login.JiraLoginActivity" />
+        <activity android:name=".ui.jiraLogin.RoomLoginActivity" />
+        <activity android:name=".ui.jiraLogin.JiraLoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

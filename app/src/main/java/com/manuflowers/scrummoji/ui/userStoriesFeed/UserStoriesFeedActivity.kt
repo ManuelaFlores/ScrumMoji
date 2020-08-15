@@ -3,15 +3,16 @@ package com.manuflowers.scrummoji.ui.userStoriesFeed
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.core.view.isVisible
 import com.manuflowers.scrummoji.R
 import com.manuflowers.scrummoji.data.model.SprintStoriesResponse
-import com.manuflowers.scrummoji.repository.FirebaseRepository
 import com.manuflowers.scrummoji.repository.UserStory
 import com.manuflowers.scrummoji.ui.sprintsFeed.SprintsFeedActivity.Companion.USER_STORIES_DATA
+import com.manuflowers.scrummoji.ui.storyPointsResults.StoryPointsResultsActivity
 import com.manuflowers.scrummoji.ui.userStoriesFeed.list.UserStoriesAdapter
 import com.manuflowers.scrummoji.utils.toast
 import kotlinx.android.synthetic.main.activity_user_stories_feed.*
@@ -23,22 +24,15 @@ class UserStoriesFeedActivity : AppCompatActivity() {
         intent.getParcelableExtra<SprintStoriesResponse>(USER_STORIES_DATA)
     }
 
-    private val fireBaseDatabase: FirebaseRepository by inject()
-
     private val viewModel: UserStoriesFeedViewModel by inject()
 
-    private val adapter by lazy {
-        UserStoriesAdapter(
-            ::sendStoryToDatabase
-        )
-    }
+    private val adapter by lazy { UserStoriesAdapter(::sendStoryToDatabase) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_stories_feed)
         setupAdapter()
         setupListeners()
-        fireBaseDatabase.addRealTimeListener()
     }
 
     private fun setupAdapter() {
@@ -50,8 +44,9 @@ class UserStoriesFeedActivity : AppCompatActivity() {
 
     private fun sendStoryToDatabase(userStory: UserStory) {
         viewModel.sendStoryToDatabase(userStory) {
-            //TODO: Start new Activity and listen for developers to send their points
-
+            val intent = Intent(this, StoryPointsResultsActivity::class.java)
+            intent.putExtra(USER_STORY_DATA, userStory)
+            startActivity(intent)
         }
     }
 
@@ -80,5 +75,6 @@ class UserStoriesFeedActivity : AppCompatActivity() {
 
     companion object {
         const val SESSION_ID = "SESSION_ID"
+        const val USER_STORY_DATA = "USER_STORY_DATA"
     }
 }
