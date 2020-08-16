@@ -1,6 +1,7 @@
 package com.manuflowers.scrummoji.di
 
 import com.manuflowers.scrummoji.ui.jiraLogin.JiraLoginViewModel
+import com.manuflowers.scrummoji.ui.roomLogin.RoomLoginActivity
 import com.manuflowers.scrummoji.ui.roomLogin.RoomLoginViewModel
 import com.manuflowers.scrummoji.ui.sprintsFeed.SprintsFeedViewModel
 import com.manuflowers.scrummoji.ui.userStoriesFeed.UserStoriesFeedViewModel

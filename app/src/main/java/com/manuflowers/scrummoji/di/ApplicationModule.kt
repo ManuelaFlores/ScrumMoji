@@ -13,7 +13,5 @@ val applicationModule = module {
 
     single { SharePreferencesManager(get()) }
 
-    scope<RoomLoginActivity> {
-        scoped<CredentialsValidator> { RoomCredentialsValidator() }
-    }
+    single<CredentialsValidator>{ RoomCredentialsValidator() }
 }

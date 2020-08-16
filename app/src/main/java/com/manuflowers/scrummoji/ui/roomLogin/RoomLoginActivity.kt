@@ -48,6 +48,7 @@ class RoomLoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToPointsEstimatorActivity() {
+        finish()
         startPointsEstimatorActivity(this)
     }
 

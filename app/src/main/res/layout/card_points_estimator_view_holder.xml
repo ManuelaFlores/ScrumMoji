@@ -23,7 +23,7 @@
             android:textColor="#562FF3"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/imageView"
+            app:layout_constraintBottom_toTopOf="@+id/emojiImageView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="16" />
@@ -38,7 +38,7 @@
             android:textColor="#562FF3"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/imageView"
+            app:layout_constraintBottom_toTopOf="@+id/emojiImageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="16" />
@@ -55,11 +55,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/emojiImageView"
             tools:text="16" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/emojiImageView"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginBottom="8dp"
