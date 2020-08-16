@@ -37,10 +37,6 @@ class RoomLoginActivity : AppCompatActivity() {
 
     private fun setupListeners() {
         joinRoomButton.setOnClickListener {
-            /*viewModel.joinRoom(
-                nickName = getUserNickname(),
-                roomId = getRoomIdData()
-            )*/
             viewModel.checkUserCredentials(
                 nickName = getUserNickname(),
                 roomId = getRoomIdData()

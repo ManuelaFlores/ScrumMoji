@@ -8,4 +8,5 @@
     <string name="room_id">Room id</string>
     <string name="nickname">Nickname</string>
     <string name="join_room">Join Room</string>
+    <string name="emoji_assigned_to_the_card">Emoji assigned to the card</string>
 </resources>
