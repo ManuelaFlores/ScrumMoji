@@ -1,9 +1,12 @@
 package com.manuflowers.scrummoji.ui.roomLogin
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.manuflowers.scrummoji.R
+import com.manuflowers.scrummoji.ui.pointsEstimator.PointsEstimatorActivity
 import com.manuflowers.scrummoji.ui.roomLogin.viewstate.*
 import kotlinx.android.synthetic.main.activity_room_login.*
 import org.koin.android.ext.android.inject
@@ -45,7 +48,7 @@ class RoomLoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToPointsEstimatorActivity() {
-
+        startPointsEstimatorActivity(this)
     }
 
     private fun getUserNickname(): String {
@@ -73,4 +76,5 @@ class RoomLoginActivity : AppCompatActivity() {
     }
 }
 
-fun startPointsEstimatorActivity() {}
+fun startPointsEstimatorActivity(from: Context) =
+    from.startActivity(Intent(from, PointsEstimatorActivity::class.java))
