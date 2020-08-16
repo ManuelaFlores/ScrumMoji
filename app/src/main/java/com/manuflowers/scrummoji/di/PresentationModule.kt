@@ -1,6 +1,7 @@
 package com.manuflowers.scrummoji.di
 
 import com.manuflowers.scrummoji.ui.jiraLogin.JiraLoginViewModel
+import com.manuflowers.scrummoji.ui.roomLogin.RoomLoginViewModel
 import com.manuflowers.scrummoji.ui.sprintsFeed.SprintsFeedViewModel
 import com.manuflowers.scrummoji.ui.userStoriesFeed.UserStoriesFeedViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -12,4 +13,6 @@ val presentationModule = module {
     viewModel { SprintsFeedViewModel(get(), get(), get()) }
 
     viewModel { UserStoriesFeedViewModel(get()) }
+
+    viewModel { RoomLoginViewModel(get(), get()) }
 }

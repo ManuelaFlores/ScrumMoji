@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.manuflowers.scrummoji.ui.jiraLogin.JiraLoginActivity
-import com.manuflowers.scrummoji.ui.jiraLogin.RoomLoginActivity
+import com.manuflowers.scrummoji.ui.roomLogin.RoomLoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

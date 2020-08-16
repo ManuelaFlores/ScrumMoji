@@ -3,7 +3,11 @@ package com.manuflowers.scrummoji.repository
 import android.os.Parcelable
 import android.util.Log
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 import com.manuflowers.scrummoji.data.local.preferences.SharePreferencesManager
+import com.manuflowers.scrummoji.data.model.Failure
+import com.manuflowers.scrummoji.data.model.Result
+import com.manuflowers.scrummoji.data.model.Success
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 
@@ -21,6 +25,7 @@ class FirebaseRepository(
         )
     }
 
+    //TODO: Add a sealed class as a parameter of this callback, so I can map a failure case
     fun registerNewSession(onSuccessListener: (sessionPath: String) -> Unit) {
         //FIXME: handle this exception
         generateSessionPath()
@@ -46,6 +51,22 @@ class FirebaseRepository(
             .setValue(userStory)
             .addOnSuccessListener {
                 onSuccessListener.invoke(userStory.title)
+            }.addOnFailureListener {
+                it.printStackTrace()
+            }
+    }
+
+    fun sendStoryEstimationToDatabase(
+        storyPointEstimation: StoryPointEstimation,
+        onSuccessListener: (sessionPath: String) -> Unit
+    ) {
+        database
+            .child(PATH_STORIES)
+            .child(sharedPreferencesManager.getRoomId() ?: "")
+            .child(storyPointEstimation.storyId)
+            .setValue(storyPointEstimation)
+            .addOnSuccessListener {
+                onSuccessListener.invoke("")
             }.addOnFailureListener {
                 it.printStackTrace()
             }
@@ -79,6 +100,30 @@ class FirebaseRepository(
             .addChildEventListener(childEventListener)
     }
 
+    fun listenNewStoriesUploaded(onChildAddedListener: (result: Result<UserStory>) -> Unit) {
+        val childEventListener = object : ChildEventListener {
+            override fun onCancelled(error: DatabaseError) {
+                onChildAddedListener.invoke(Failure(error.toException()))
+            }
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
+
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                val result = snapshot.getValue<UserStory>() ?: return
+                onChildAddedListener.invoke(Success(result))
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {}
+        }
+
+        database
+            .child(PATH_STORIES)
+            .child(sharedPreferencesManager.getRoomId() ?: "")
+            .addChildEventListener(childEventListener)
+    }
+
     companion object {
         const val PATH_SESSIONS = "SESSIONS"
         const val PATH_STORIES = "STORIES"
@@ -89,6 +134,13 @@ class FirebaseRepository(
 @Parcelize
 @IgnoreExtraProperties
 data class UserStory(
-    var title: String = "",
-    var id: String = ""
-): Parcelable
+    @PropertyName("title") var title: String = "",
+    @PropertyName("id") var id: String = ""
+) : Parcelable
+
+@IgnoreExtraProperties
+data class StoryPointEstimation(
+    @PropertyName("userNickname") val userNickname: String = "",
+    @PropertyName("storyId") val storyId: String = "",
+    @PropertyName("storyPoints") var storyPoints: String = ""
+)

@@ -15,4 +15,14 @@ class UserRepositoryImpl(
     fun setUserLoggedIn(isLoggedIn: Boolean) = sharedPreferencesManager.setUserLoggedIn(isLoggedIn)
 
     fun isUserLoggedIn() = sharedPreferencesManager.isUserLoggedIn()
+
+    fun saveRoomId(roomId: String) = sharedPreferencesManager.saveRoomId(roomId)
+
+    fun getRoomId() = sharedPreferencesManager.getRoomId()
+
+    fun saveDeveloperNickname(nickname: String) =
+        sharedPreferencesManager.saveDeveloperNickname(nickname)
+
+    fun getDeveloperNickname() = sharedPreferencesManager.getDeveloperNickname()
+
 }
