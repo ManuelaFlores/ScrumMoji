@@ -1,6 +1,6 @@
 package com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate
 
-import com.manuflowers.scrummoji.repository.StoryPointEstimation
+import com.manuflowers.scrummoji.data.model.StoryPointEstimation
 
 sealed class ResultsEstimationState
 class SuccessResultEstimationListResponse(

@@ -1,7 +1,6 @@
 package com.manuflowers.scrummoji.data.model
 
 import android.os.Parcelable
-import com.manuflowers.scrummoji.repository.UserStory
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 

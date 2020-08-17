@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.manuflowers.scrummoji.R
-import com.manuflowers.scrummoji.repository.UserStory
+import com.manuflowers.scrummoji.data.model.UserStory
 import com.manuflowers.scrummoji.ui.storyResultsEstimation.list.StoryResultsEstimationAdapter
 import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.ResultEstimationError
 import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.ResultsEstimationState

@@ -3,9 +3,7 @@ package com.manuflowers.scrummoji.ui.pointsEstimator
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.manuflowers.scrummoji.data.model.CardEstimatorModel
-import com.manuflowers.scrummoji.data.model.Failure
-import com.manuflowers.scrummoji.data.model.Success
+import com.manuflowers.scrummoji.data.model.*
 import com.manuflowers.scrummoji.repository.*
 import com.manuflowers.scrummoji.ui.pointsEstimator.viewstate.PointsEstimatorError
 import com.manuflowers.scrummoji.ui.pointsEstimator.viewstate.PointsEstimatorState

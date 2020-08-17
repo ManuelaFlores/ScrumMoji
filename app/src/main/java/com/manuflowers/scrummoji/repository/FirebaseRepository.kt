@@ -1,13 +1,9 @@
 package com.manuflowers.scrummoji.repository
 
-import android.os.Parcelable
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import com.manuflowers.scrummoji.data.local.preferences.SharePreferencesManager
-import com.manuflowers.scrummoji.data.model.Failure
-import com.manuflowers.scrummoji.data.model.Result
-import com.manuflowers.scrummoji.data.model.Success
-import kotlinx.android.parcel.Parcelize
+import com.manuflowers.scrummoji.data.model.*
 import java.util.*
 
 class FirebaseRepository(
@@ -155,17 +151,3 @@ class FirebaseRepository(
         const val PATH_STORY_POINTS = "STORY_POINTS"
     }
 }
-
-@Parcelize
-@IgnoreExtraProperties
-data class UserStory(
-    @PropertyName("title") var title: String = "",
-    @PropertyName("id") var id: String = ""
-) : Parcelable
-
-@IgnoreExtraProperties
-data class StoryPointEstimation(
-    @PropertyName("userNickname") val userNickname: String = "",
-    @PropertyName("storyId") val storyId: String = "",
-    @PropertyName("storyPoints") var storyPoints: Int = 0
-)

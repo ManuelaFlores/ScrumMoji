@@ -1,7 +1,7 @@
 package com.manuflowers.scrummoji.ui.pointsEstimator.viewstate
 
 import com.manuflowers.scrummoji.data.model.CardEstimatorModel
-import com.manuflowers.scrummoji.repository.UserStory
+import com.manuflowers.scrummoji.data.model.UserStory
 
 sealed class PointsEstimatorState
 class SuccessFirebaseResponse(

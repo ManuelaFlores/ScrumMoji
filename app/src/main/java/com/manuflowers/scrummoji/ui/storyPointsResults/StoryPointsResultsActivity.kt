@@ -3,7 +3,7 @@ package com.manuflowers.scrummoji.ui.storyPointsResults
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.manuflowers.scrummoji.R
-import com.manuflowers.scrummoji.repository.UserStory
+import com.manuflowers.scrummoji.data.model.UserStory
 import com.manuflowers.scrummoji.ui.userStoriesFeed.UserStoriesFeedActivity.Companion.USER_STORY_DATA
 import kotlinx.android.synthetic.main.activity_story_points_results.*
 

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.manuflowers.scrummoji.R
-import com.manuflowers.scrummoji.repository.StoryPointEstimation
+import com.manuflowers.scrummoji.data.model.StoryPointEstimation
 
 class StoryResultsEstimationAdapter : RecyclerView.Adapter<StoryResultsEstimationViewHolder>() {
 

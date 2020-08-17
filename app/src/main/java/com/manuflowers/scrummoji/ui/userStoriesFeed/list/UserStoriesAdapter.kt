@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.manuflowers.scrummoji.R
 import com.manuflowers.scrummoji.data.model.IssueResponse
-import com.manuflowers.scrummoji.repository.UserStory
+import com.manuflowers.scrummoji.data.model.UserStory
 
 class UserStoriesAdapter(
     private val onUserStorySelected: (userStory: UserStory) -> Unit

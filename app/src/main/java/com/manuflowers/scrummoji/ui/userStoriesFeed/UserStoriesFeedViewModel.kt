@@ -1,8 +1,8 @@
 package com.manuflowers.scrummoji.ui.userStoriesFeed
 
 import androidx.lifecycle.ViewModel
+import com.manuflowers.scrummoji.data.model.UserStory
 import com.manuflowers.scrummoji.repository.FirebaseRepository
-import com.manuflowers.scrummoji.repository.UserStory
 
 class UserStoriesFeedViewModel(
     private val firebaseRepository: FirebaseRepository

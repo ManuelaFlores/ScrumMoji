@@ -10,7 +10,7 @@ import android.util.Log
 import androidx.core.view.isVisible
 import com.manuflowers.scrummoji.R
 import com.manuflowers.scrummoji.data.model.SprintStoriesResponse
-import com.manuflowers.scrummoji.repository.UserStory
+import com.manuflowers.scrummoji.data.model.UserStory
 import com.manuflowers.scrummoji.ui.sprintsFeed.SprintsFeedActivity.Companion.USER_STORIES_DATA
 import com.manuflowers.scrummoji.ui.storyPointsResults.StoryPointsResultsActivity
 import com.manuflowers.scrummoji.ui.userStoriesFeed.list.UserStoriesAdapter
