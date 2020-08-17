@@ -1,6 +1,7 @@
 package com.manuflowers.scrummoji.di
 
 import com.manuflowers.scrummoji.ui.jiraLogin.JiraLoginViewModel
+import com.manuflowers.scrummoji.ui.pointsEstimator.PointsEstimatorViewModel
 import com.manuflowers.scrummoji.ui.roomLogin.RoomLoginActivity
 import com.manuflowers.scrummoji.ui.roomLogin.RoomLoginViewModel
 import com.manuflowers.scrummoji.ui.sprintsFeed.SprintsFeedViewModel
@@ -16,4 +17,6 @@ val presentationModule = module {
     viewModel { UserStoriesFeedViewModel(get()) }
 
     viewModel { RoomLoginViewModel(get(), get()) }
+
+    viewModel { PointsEstimatorViewModel(get(), get(), get()) }
 }

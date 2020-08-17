@@ -58,15 +58,16 @@ class FirebaseRepository(
 
     fun sendStoryEstimationToDatabase(
         storyPointEstimation: StoryPointEstimation,
-        onSuccessListener: (sessionPath: String) -> Unit
+        onSuccessListener: () -> Unit
     ) {
         database
-            .child(PATH_STORIES)
+            .child(PATH_STORY_POINTS)
             .child(sharedPreferencesManager.getRoomId() ?: "")
             .child(storyPointEstimation.storyId)
+            .child(sharedPreferencesManager.getDeveloperNickname()?:"")
             .setValue(storyPointEstimation)
             .addOnSuccessListener {
-                onSuccessListener.invoke("")
+                onSuccessListener.invoke()
             }.addOnFailureListener {
                 it.printStackTrace()
             }
@@ -112,6 +113,7 @@ class FirebaseRepository(
 
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val result = snapshot.getValue<UserStory>() ?: return
+                Log.d("TAG", "onChildAddeddddd:$result")
                 onChildAddedListener.invoke(Success(result))
             }
 
@@ -142,5 +144,5 @@ data class UserStory(
 data class StoryPointEstimation(
     @PropertyName("userNickname") val userNickname: String = "",
     @PropertyName("storyId") val storyId: String = "",
-    @PropertyName("storyPoints") var storyPoints: String = ""
+    @PropertyName("storyPoints") var storyPoints: Int = 0
 )

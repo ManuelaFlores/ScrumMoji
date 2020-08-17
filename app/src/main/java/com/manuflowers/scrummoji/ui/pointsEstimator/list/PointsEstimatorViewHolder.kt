@@ -11,15 +11,22 @@ class PointsEstimatorViewHolder(
     override val containerView: View
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-    fun bind(cardEstimatorModel: CardEstimatorModel) = with(containerView) {
-        rightPointsTextView.text = cardEstimatorModel.points.toString()
-        leftPointsTextView.text = cardEstimatorModel.points.toString()
-        bottomPointsTextView.text = cardEstimatorModel.points.toString()
-        emojiImageView.setImageDrawable(
-            ContextCompat.getDrawable(
-                this.context,
-                cardEstimatorModel.emojiResource
+    fun bind(
+        cardEstimatorModel: CardEstimatorModel,
+        onCardSelected: (cardEstimatorModel: CardEstimatorModel) -> Unit
+    ) =
+        with(containerView) {
+            rightPointsTextView.text = cardEstimatorModel.points.toString()
+            leftPointsTextView.text = cardEstimatorModel.points.toString()
+            bottomPointsTextView.text = cardEstimatorModel.points.toString()
+            emojiImageView.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this.context,
+                    cardEstimatorModel.emojiResource
+                )
             )
-        )
-    }
+            this.setOnClickListener {
+                onCardSelected.invoke(cardEstimatorModel)
+            }
+        }
 }

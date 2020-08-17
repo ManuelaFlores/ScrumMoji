@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.manuflowers.scrummoji.R
 import com.manuflowers.scrummoji.data.model.CardEstimatorModel
 
-class PointsEstimatorAdapter : RecyclerView.Adapter<PointsEstimatorViewHolder>() {
+class PointsEstimatorAdapter(
+    private val onCardSelected: (cardEstimatorModel: CardEstimatorModel) -> Unit
+) : RecyclerView.Adapter<PointsEstimatorViewHolder>() {
 
     private val cardsEstimatorModelList = mutableListOf<CardEstimatorModel>()
 
@@ -19,10 +21,11 @@ class PointsEstimatorAdapter : RecyclerView.Adapter<PointsEstimatorViewHolder>()
     override fun getItemCount(): Int = cardsEstimatorModelList.size
 
     override fun onBindViewHolder(holder: PointsEstimatorViewHolder, position: Int) {
-        holder.bind(cardsEstimatorModelList[position])
+        holder.bind(cardsEstimatorModelList[position], onCardSelected)
     }
 
     fun addData(cardsEstimatorModelList: List<CardEstimatorModel>) {
         this.cardsEstimatorModelList.addAll(cardsEstimatorModelList)
+        notifyDataSetChanged()
     }
 }
