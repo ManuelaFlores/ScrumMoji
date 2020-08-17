@@ -22,7 +22,7 @@ class PointsEstimatorViewModel(
         get() = pointsEstimatorStateMutableLiveData
 
     private var currentCardEstimatorModel = CardEstimatorModel("", 0, 0)
-    private var currentStoryId = ""
+    private var currentStory = UserStory("", "")
 
     fun listenForNewStory() {
         firebaseRepository.listenNewStoriesUploaded {
@@ -41,9 +41,11 @@ class PointsEstimatorViewModel(
         }
     }
 
-    fun setCurrentStoryId(storyId: String) {
-        this.currentStoryId = storyId
+    fun setCurrentStory(userStory: UserStory) {
+        this.currentStory = userStory
     }
+
+    fun getCurrentStory(): UserStory = this.currentStory
 
     fun updateCurrentCardEstimatorModel(cardEstimatorModel: CardEstimatorModel) {
         this.currentCardEstimatorModel = cardEstimatorModel
@@ -53,7 +55,7 @@ class PointsEstimatorViewModel(
         firebaseRepository.sendStoryEstimationToDatabase(
             StoryPointEstimation(
                 userNickname = userRepositoryImpl.getDeveloperNickname() ?: "",
-                storyId = currentStoryId,
+                storyId = currentStory.id,
                 storyPoints = currentCardEstimatorModel.points
             )
         ) { onSuccessListener.invoke() }

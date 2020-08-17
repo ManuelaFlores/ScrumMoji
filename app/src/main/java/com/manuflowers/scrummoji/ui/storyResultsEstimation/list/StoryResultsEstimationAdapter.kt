@@ -27,8 +27,15 @@ class StoryResultsEstimationAdapter : RecyclerView.Adapter<StoryResultsEstimatio
         holder.bind(storyResultsEstimationList[position])
     }
 
-    private fun addNewResult(storyPointEstimation: StoryPointEstimation) {
-        this.storyResultsEstimationList.add(storyPointEstimation)
+    fun addNewResult(storyPointEstimation: StoryPointEstimation) {
+        if (!storyResultsEstimationList.contains(storyPointEstimation)) {
+            this.storyResultsEstimationList.add(storyPointEstimation)
+            notifyDataSetChanged()
+        }
+    }
+
+    fun setResults(storyPointsEstimationList : List<StoryPointEstimation>) {
+        this.storyResultsEstimationList.addAll(storyPointsEstimationList)
         notifyDataSetChanged()
     }
 }

@@ -13,7 +13,10 @@ import com.manuflowers.scrummoji.ui.pointsEstimator.list.PointsEstimatorAdapter
 import com.manuflowers.scrummoji.ui.pointsEstimator.viewstate.PointsEstimatorError
 import com.manuflowers.scrummoji.ui.pointsEstimator.viewstate.PointsEstimatorState
 import com.manuflowers.scrummoji.ui.pointsEstimator.viewstate.SuccessFirebaseResponse
+import com.manuflowers.scrummoji.ui.storyPointsResults.StoryPointsResultsActivity
 import com.manuflowers.scrummoji.ui.storyResultsEstimation.StoryResultsEstimationActivity
+import com.manuflowers.scrummoji.ui.userStoriesFeed.UserStoriesFeedActivity
+import com.manuflowers.scrummoji.ui.userStoriesFeed.UserStoriesFeedActivity.Companion.USER_STORY_DATA
 import com.manuflowers.scrummoji.utils.toast
 import kotlinx.android.synthetic.main.activity_points_estimator.*
 import kotlinx.android.synthetic.main.view_card_selected.*
@@ -46,7 +49,7 @@ class PointsEstimatorActivity : AppCompatActivity() {
     private fun onPointsEstimatorStateChanged(pointsEstimatorState: PointsEstimatorState) {
         when (pointsEstimatorState) {
             is SuccessFirebaseResponse -> {
-                viewModel.setCurrentStoryId(pointsEstimatorState.userStory.id)
+                viewModel.setCurrentStory(pointsEstimatorState.userStory)
                 titleStoryTextView.text = pointsEstimatorState.userStory.title
                 pointsEstimatorAdapter.addData(pointsEstimatorState.data)
                 loadingViewContainer.isVisible = false
@@ -74,7 +77,14 @@ class PointsEstimatorActivity : AppCompatActivity() {
         }
 
         doneButton.setOnClickListener {
-            viewModel.uploadEstimatedStory { startStoryResultsEstimationActivity(this) }
+            viewModel.uploadEstimatedStory {
+                val intent = Intent(this, StoryResultsEstimationActivity::class.java)
+                intent.putExtra(
+                    USER_STORY_DATA,
+                    viewModel.getCurrentStory()
+                )
+                startActivity(intent)
+            }
         }
     }
 
@@ -82,6 +92,3 @@ class PointsEstimatorActivity : AppCompatActivity() {
         pointsEstimatorRecyclerView.adapter = pointsEstimatorAdapter
     }
 }
-
-fun startStoryResultsEstimationActivity(from: Context) =
-    from.startActivity(Intent(from, StoryResultsEstimationActivity::class.java))

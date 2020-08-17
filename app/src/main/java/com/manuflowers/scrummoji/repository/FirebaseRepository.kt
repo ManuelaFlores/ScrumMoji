@@ -25,9 +25,7 @@ class FirebaseRepository(
         )
     }
 
-    //TODO: Add a sealed class as a parameter of this callback, so I can map a failure case
     fun registerNewSession(onSuccessListener: (sessionPath: String) -> Unit) {
-        //FIXME: handle this exception
         generateSessionPath()
         database
             .child(PATH_SESSIONS)
@@ -60,25 +58,27 @@ class FirebaseRepository(
         storyPointEstimation: StoryPointEstimation,
         onSuccessListener: () -> Unit
     ) {
-        database
+        val reference = database
             .child(PATH_STORY_POINTS)
             .child(sharedPreferencesManager.getRoomId() ?: "")
-            .child(storyPointEstimation.storyId)
-            .child(sharedPreferencesManager.getDeveloperNickname()?:"")
-            .setValue(storyPointEstimation)
-            .addOnSuccessListener {
-                onSuccessListener.invoke()
-            }.addOnFailureListener {
-                it.printStackTrace()
-            }
+            .child(storyPointEstimation.storyId).push()
+
+        reference.setValue(storyPointEstimation).addOnSuccessListener {
+            onSuccessListener.invoke()
+        }.addOnFailureListener {
+            it.printStackTrace()
+        }
     }
 
-    fun addRealTimeListener() {
+    fun listenNewEstimationUploaded(
+        storyId: String,
+        onChildAddedListener: (result: Result<StoryPointEstimation>) -> Unit
+    ) {
         val childEventListener = object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
-                Log.d("TAG", "onChildAdded:" + dataSnapshot.key)
-                val comment = dataSnapshot.value
-                Log.d("TAG", "onChildAddeddddd:" + dataSnapshot.value)
+                val result = dataSnapshot.getValue<StoryPointEstimation>() ?: return
+                Log.e("ERRRRRRRR", "$result")
+                onChildAddedListener.invoke(Success(result))
             }
 
             override fun onChildChanged(dataSnapshot: DataSnapshot, previousChildName: String?) {
@@ -91,14 +91,40 @@ class FirebaseRepository(
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                Log.w("TAG", "postComments:onCancelled", databaseError.toException())
+                onChildAddedListener.invoke(Failure(databaseError.toException()))
             }
         }
 
         database
-            .child(PATH_STORIES)
-            .child(sharedPreferencesManager.getSessionPath() ?: "")
+            .child(PATH_STORY_POINTS)
+            .child(sharedPreferencesManager.getRoomId() ?: "")
+            .child(storyId)
             .addChildEventListener(childEventListener)
+    }
+
+    fun getAllEstimationsUploaded(
+        storyId: String,
+        onChildrenListener: (result: Result<List<StoryPointEstimation>>) -> Unit
+    ) {
+
+        val singleValueEvent = object : ValueEventListener {
+            override fun onCancelled(error: DatabaseError) {
+                onChildrenListener.invoke(Failure(error.toException()))
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val result = snapshot.children.map { it.getValue<StoryPointEstimation>() ?: return }
+                if (result.isNotEmpty()) {
+                    onChildrenListener.invoke(Success(result))
+                }
+            }
+        }
+
+        database
+            .child(PATH_STORY_POINTS)
+            .child(sharedPreferencesManager.getRoomId() ?: "")
+            .child(storyId)
+            .addListenerForSingleValueEvent(singleValueEvent)
     }
 
     fun listenNewStoriesUploaded(onChildAddedListener: (result: Result<UserStory>) -> Unit) {
@@ -113,7 +139,6 @@ class FirebaseRepository(
 
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val result = snapshot.getValue<UserStory>() ?: return
-                Log.d("TAG", "onChildAddeddddd:$result")
                 onChildAddedListener.invoke(Success(result))
             }
 
