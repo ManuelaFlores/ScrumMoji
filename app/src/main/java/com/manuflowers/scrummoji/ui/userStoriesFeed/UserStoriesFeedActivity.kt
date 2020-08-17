@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.core.view.isVisible
 import com.manuflowers.scrummoji.R
@@ -69,6 +70,8 @@ class UserStoriesFeedActivity : AppCompatActivity() {
         val myClipboard = this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager?
 
         val roomId = idSessionTextView.text.toString().substringAfter(':')
+        Log.e("ROOM_ID", "${roomId.trim()}")
+        viewModel.saveRoomId(roomId.trim())
 
         val myClip = ClipData.newPlainText(SESSION_ID, roomId.trim())
         myClipboard?.setPrimaryClip(myClip)

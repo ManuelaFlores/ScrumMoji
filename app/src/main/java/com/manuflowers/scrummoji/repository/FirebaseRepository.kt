@@ -108,9 +108,7 @@ class FirebaseRepository(
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 val result = snapshot.children.map { it.getValue<StoryPointEstimation>() ?: return }
-                if (result.isNotEmpty()) {
                     onChildrenListener.invoke(Success(result))
-                }
             }
         }
 

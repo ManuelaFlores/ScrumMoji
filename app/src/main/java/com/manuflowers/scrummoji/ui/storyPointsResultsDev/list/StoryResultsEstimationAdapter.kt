@@ -38,4 +38,10 @@ class StoryResultsEstimationAdapter : RecyclerView.Adapter<StoryResultsEstimatio
         this.storyResultsEstimationList.addAll(storyPointsEstimationList)
         notifyDataSetChanged()
     }
+
+    fun calculateHighestEstimation(): StoryPointEstimation? {
+       return storyResultsEstimationList.maxBy {
+            it.storyPoints
+        }
+    }
 }
