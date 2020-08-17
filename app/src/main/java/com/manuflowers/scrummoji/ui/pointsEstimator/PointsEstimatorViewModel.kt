@@ -3,11 +3,13 @@ package com.manuflowers.scrummoji.ui.pointsEstimator
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.android.gms.tasks.OnSuccessListener
 import com.manuflowers.scrummoji.data.model.CardEstimatorModel
 import com.manuflowers.scrummoji.data.model.Failure
 import com.manuflowers.scrummoji.data.model.Success
 import com.manuflowers.scrummoji.repository.*
+import com.manuflowers.scrummoji.ui.pointsEstimator.viewstate.PointsEstimatorError
+import com.manuflowers.scrummoji.ui.pointsEstimator.viewstate.PointsEstimatorState
+import com.manuflowers.scrummoji.ui.pointsEstimator.viewstate.SuccessFirebaseResponse
 
 class PointsEstimatorViewModel(
     private val cardEstimatorRepository: CardEstimatorRepository,
@@ -58,11 +60,3 @@ class PointsEstimatorViewModel(
     }
 
 }
-
-sealed class PointsEstimatorState
-class SuccessFirebaseResponse(
-    val userStory: UserStory,
-    val data: List<CardEstimatorModel>
-) : PointsEstimatorState()
-
-class PointsEstimatorError(val error: String) : PointsEstimatorState()

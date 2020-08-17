@@ -1,5 +1,7 @@
 package com.manuflowers.scrummoji.ui.pointsEstimator
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
@@ -8,6 +10,10 @@ import androidx.lifecycle.Observer
 import com.manuflowers.scrummoji.R
 import com.manuflowers.scrummoji.data.model.CardEstimatorModel
 import com.manuflowers.scrummoji.ui.pointsEstimator.list.PointsEstimatorAdapter
+import com.manuflowers.scrummoji.ui.pointsEstimator.viewstate.PointsEstimatorError
+import com.manuflowers.scrummoji.ui.pointsEstimator.viewstate.PointsEstimatorState
+import com.manuflowers.scrummoji.ui.pointsEstimator.viewstate.SuccessFirebaseResponse
+import com.manuflowers.scrummoji.ui.storyResultsEstimation.StoryResultsEstimationActivity
 import com.manuflowers.scrummoji.utils.toast
 import kotlinx.android.synthetic.main.activity_points_estimator.*
 import kotlinx.android.synthetic.main.view_card_selected.*
@@ -68,9 +74,7 @@ class PointsEstimatorActivity : AppCompatActivity() {
         }
 
         doneButton.setOnClickListener {
-            viewModel.uploadEstimatedStory {
-
-            }
+            viewModel.uploadEstimatedStory { startStoryResultsEstimationActivity(this) }
         }
     }
 
@@ -78,3 +82,6 @@ class PointsEstimatorActivity : AppCompatActivity() {
         pointsEstimatorRecyclerView.adapter = pointsEstimatorAdapter
     }
 }
+
+fun startStoryResultsEstimationActivity(from: Context) =
+    from.startActivity(Intent(from, StoryResultsEstimationActivity::class.java))

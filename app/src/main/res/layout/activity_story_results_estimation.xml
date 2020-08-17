@@ -6,4 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.storyResultsEstimation.StoryResultsEstimationActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/storyResultsEstimationRecyclerView"
+        android:layout_width="match_parent"
+        android:padding="@dimen/padding_half"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/story_result_estimation_view_holder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
