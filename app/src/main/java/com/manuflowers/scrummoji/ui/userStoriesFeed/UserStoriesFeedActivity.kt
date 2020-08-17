@@ -12,7 +12,7 @@ import com.manuflowers.scrummoji.R
 import com.manuflowers.scrummoji.data.model.SprintStoriesResponse
 import com.manuflowers.scrummoji.data.model.UserStory
 import com.manuflowers.scrummoji.ui.sprintsFeed.SprintsFeedActivity.Companion.USER_STORIES_DATA
-import com.manuflowers.scrummoji.ui.storyPointsResults.StoryPointsResultsActivity
+import com.manuflowers.scrummoji.ui.storyPointsResultsSM.StoryPointsResultsActivity
 import com.manuflowers.scrummoji.ui.userStoriesFeed.list.UserStoriesAdapter
 import com.manuflowers.scrummoji.utils.toast
 import kotlinx.android.synthetic.main.activity_user_stories_feed.*

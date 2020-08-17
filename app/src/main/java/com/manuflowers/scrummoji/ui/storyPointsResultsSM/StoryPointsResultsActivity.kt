@@ -1,4 +1,4 @@
-package com.manuflowers.scrummoji.ui.storyPointsResults
+package com.manuflowers.scrummoji.ui.storyPointsResultsSM
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,6 +23,10 @@ class StoryPointsResultsActivity : AppCompatActivity() {
         userStory?.let {
             storyTitleTextView.text = it.title
         }
+    }
+
+    private fun setupListeners() {
+
     }
 
     //TODO: Listen for changes

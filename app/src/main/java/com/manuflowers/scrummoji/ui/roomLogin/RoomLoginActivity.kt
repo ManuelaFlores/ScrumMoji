@@ -63,11 +63,11 @@ class RoomLoginActivity : AppCompatActivity() {
     }
 
     private fun setRoomIdError() {
-        roomIdTextInputLayout.error = "Your room id needs to have at least 15 characters"
+        roomIdTextInputLayout.error = getString(R.string.room_id_login_error)
     }
 
     private fun setNicknameError() {
-        nicknameTextInputLayout.error = "Your nickname needs to have at least 4 characters"
+        nicknameTextInputLayout.error = getString(R.string.room_login_nickname_error)
     }
 
     private fun removeUserNicknameError() {

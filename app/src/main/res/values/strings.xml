@@ -18,4 +18,9 @@
     <string name="developer">Developer</string>
     <string name="who_are_you">Who are you?</string>
     <string name="scrum_master">Scrum Master</string>
+    <string name="room_login_nickname_error">Your nickname needs to have at least 4 characters</string>
+    <string name="room_id_login_error">Your room id needs to have at least 15 characters</string>
+    <string name="assign_hightest_points">Assign points</string>
+    <string name="assign_it_myself">Assign it myself</string>
+    <string name="assign_your_points">Assign your points</string>
 </resources>
