@@ -23,5 +23,5 @@ val presentationModule = module {
 
     viewModel { StoryPointsResultsDevViewModel(get()) }
 
-    viewModel { StoryPointsResultSMViewModel(get(), get()) }
+    viewModel { StoryPointsResultSMViewModel(get(), get(), get(), get()) }
 }

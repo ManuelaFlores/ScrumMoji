@@ -42,6 +42,7 @@ class SprintsFeedActivity : AppCompatActivity() {
                 is SprintsFeedSuccess -> {
                     val intent = Intent(this, UserStoriesFeedActivity::class.java)
                     intent.putExtra(USER_STORIES_DATA, sprintsFeed.data)
+                    intent.putExtra(CURRENT_SPRINT_ID, viewModel.getCurrentSprintId())
                     startActivity(intent)
                 }
                 is SprintsFeedError -> {
@@ -61,5 +62,6 @@ class SprintsFeedActivity : AppCompatActivity() {
 
     companion object {
         const val USER_STORIES_DATA = "USER_STORIES_DATA"
+        const val CURRENT_SPRINT_ID = "CURRENT_SPRINT_ID"
     }
 }

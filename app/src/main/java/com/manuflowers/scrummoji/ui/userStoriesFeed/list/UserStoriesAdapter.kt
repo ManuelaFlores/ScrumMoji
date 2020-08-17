@@ -28,5 +28,6 @@ class UserStoriesAdapter(
 
     fun addData(sprintsList: List<IssueResponse>) {
         this.userStoriesList.addAll(sprintsList)
+        notifyDataSetChanged()
     }
 }

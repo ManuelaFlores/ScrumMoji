@@ -1,20 +1,28 @@
 package com.manuflowers.scrummoji.ui.storyPointsResultsSM
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.manuflowers.scrummoji.data.model.Failure
 import com.manuflowers.scrummoji.data.model.Success
+import com.manuflowers.scrummoji.data.model.UpdateSprintStoryRequest
+import com.manuflowers.scrummoji.data.network.BasicAuthentication
 import com.manuflowers.scrummoji.repository.FirebaseRepository
+import com.manuflowers.scrummoji.repository.JiraRepositoryImpl
 import com.manuflowers.scrummoji.repository.UserRepositoryImpl
 import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.ResultEstimationError
 import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.ResultsEstimationState
 import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.SuccessResultEstimationResponse
+import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.UpdateUSerStoryStateSuccess
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class StoryPointsResultSMViewModel(
     private val firebaseRepository: FirebaseRepository,
-    private val userRepositoryImpl: UserRepositoryImpl
+    private val userRepositoryImpl: UserRepositoryImpl,
+    private val jiraRepositoryImpl: JiraRepositoryImpl,
+    private val basicAuthentication: BasicAuthentication
 ) : ViewModel() {
 
 
@@ -23,7 +31,6 @@ class StoryPointsResultSMViewModel(
         get() = resultsEstimationStateMutableLiveData
 
     fun listenNewEstimationUploaded(storyId: String) {
-        Log.e("VIEW_MODEL", "${userRepositoryImpl.getRoomId()}")
         firebaseRepository.listenNewEstimationUploaded(storyId) { result ->
             when (result) {
                 is Success -> {
@@ -40,5 +47,31 @@ class StoryPointsResultSMViewModel(
         }
     }
 
+    fun updateStory(pointsSelected: String, storyId: String) {
+        viewModelScope.launch {
+            basicAuthentication.createCredentials(userRepositoryImpl.getUserCredentials())
 
+            val result = jiraRepositoryImpl.updateSprintStory(
+                updateSprintStoryRequest = UpdateSprintStoryRequest(pointsSelected),
+                storyId = storyId,
+                interceptor = basicAuthentication
+            )
+
+            when (result) {
+                is Success -> {
+                    result.data.collect {
+                        resultsEstimationStateMutableLiveData.postValue(
+                            UpdateUSerStoryStateSuccess(
+                                it.value.toInt().toString()
+                            )
+                        )
+                    }
+                }
+                is Failure -> {
+                    ResultEstimationError(result.error.localizedMessage ?: "")
+                }
+            }
+
+        }
+    }
 }

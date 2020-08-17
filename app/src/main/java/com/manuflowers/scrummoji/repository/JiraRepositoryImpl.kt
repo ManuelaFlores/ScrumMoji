@@ -38,4 +38,23 @@ class JiraRepositoryImpl(
         }
     }
 
+    suspend fun updateSprintStory(
+        updateSprintStoryRequest: UpdateSprintStoryRequest,
+        storyId: String,
+        interceptor: Interceptor
+    ): Result<Flow<UpdateSprintStoryResponse>> {
+        return try {
+            val result = apiFactory.buildApiJiraService(interceptor).updateSprintStory(
+                storyId = storyId,
+                boardId = 1,
+                updateSprintStoryRequest = updateSprintStoryRequest
+            )
+            Success(flowOf(result))
+        } catch (e: IOException) {
+            Failure(e)
+        } catch (e: HttpException) {
+            Failure(e)
+        }
+    }
+
 }

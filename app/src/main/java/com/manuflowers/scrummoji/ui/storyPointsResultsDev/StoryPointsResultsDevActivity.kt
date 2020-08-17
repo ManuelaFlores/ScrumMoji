@@ -1,10 +1,13 @@
 package com.manuflowers.scrummoji.ui.storyPointsResultsDev
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.manuflowers.scrummoji.R
 import com.manuflowers.scrummoji.data.model.UserStory
+import com.manuflowers.scrummoji.ui.pointsEstimator.PointsEstimatorActivity
 import com.manuflowers.scrummoji.ui.storyPointsResultsDev.list.StoryResultsEstimationAdapter
 import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.ResultEstimationError
 import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.ResultsEstimationState
@@ -33,6 +36,7 @@ class StoryPointsResultsDevActivity : AppCompatActivity() {
         setupList()
         subscribeData()
         listenNewEstimationListUploaded()
+        setupListeners()
     }
 
     private fun listenNewEstimationListUploaded() {
@@ -68,7 +72,17 @@ class StoryPointsResultsDevActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupListeners() {
+        nextStoryButton.setOnClickListener {
+            startPointsEstimatorActivity(this)
+        }
+    }
+
     private fun setupList() {
         storyResultsEstimationRecyclerView.adapter = adapter
     }
 }
+
+
+fun startPointsEstimatorActivity(from: Context) =
+    from.startActivity(Intent(from, PointsEstimatorActivity::class.java))

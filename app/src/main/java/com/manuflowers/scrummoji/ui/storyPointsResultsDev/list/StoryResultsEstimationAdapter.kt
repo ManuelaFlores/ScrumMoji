@@ -10,6 +10,8 @@ class StoryResultsEstimationAdapter : RecyclerView.Adapter<StoryResultsEstimatio
 
     private val storyResultsEstimationList = mutableListOf<StoryPointEstimation>()
 
+    private var highestEstimation: StoryPointEstimation? = StoryPointEstimation("", "", 0)
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -34,14 +36,18 @@ class StoryResultsEstimationAdapter : RecyclerView.Adapter<StoryResultsEstimatio
         }
     }
 
-    fun setResults(storyPointsEstimationList : List<StoryPointEstimation>) {
+    fun setResults(storyPointsEstimationList: List<StoryPointEstimation>) {
         this.storyResultsEstimationList.addAll(storyPointsEstimationList)
         notifyDataSetChanged()
     }
 
     fun calculateHighestEstimation(): StoryPointEstimation? {
-       return storyResultsEstimationList.maxBy {
+        highestEstimation = storyResultsEstimationList.maxBy {
             it.storyPoints
         }
+        return highestEstimation
+
     }
+
+    fun getHighestEstimation() = highestEstimation
 }

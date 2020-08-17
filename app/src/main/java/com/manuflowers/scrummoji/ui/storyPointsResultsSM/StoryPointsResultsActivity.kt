@@ -1,17 +1,20 @@
 package com.manuflowers.scrummoji.ui.storyPointsResultsSM
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.manuflowers.scrummoji.R
+import com.manuflowers.scrummoji.data.model.SprintStoriesResponse
 import com.manuflowers.scrummoji.data.model.UserStory
+import com.manuflowers.scrummoji.ui.pointsEstimator.PointsEstimatorActivity
+import com.manuflowers.scrummoji.ui.sprintsFeed.SprintsFeedActivity
 import com.manuflowers.scrummoji.ui.storyPointsResultsDev.StoryPointsResultsDevViewModel
 import com.manuflowers.scrummoji.ui.storyPointsResultsDev.list.StoryResultsEstimationAdapter
-import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.ResultEstimationError
-import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.ResultsEstimationState
-import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.SuccessResultEstimationListResponse
-import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.SuccessResultEstimationResponse
+import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.*
+import com.manuflowers.scrummoji.ui.userStoriesFeed.UserStoriesFeedActivity
 import com.manuflowers.scrummoji.ui.userStoriesFeed.UserStoriesFeedActivity.Companion.USER_STORY_DATA
 import com.manuflowers.scrummoji.utils.toast
 import kotlinx.android.synthetic.main.activity_story_points_results.*
@@ -23,6 +26,14 @@ class StoryPointsResultsActivity : AppCompatActivity() {
 
     private val userStory by lazy {
         intent.getParcelableExtra<UserStory>(USER_STORY_DATA)
+    }
+
+    private val currentSprintId by lazy {
+        intent.getIntExtra(SprintsFeedActivity.CURRENT_SPRINT_ID, 0)
+    }
+
+    private val sprintsList by lazy {
+        intent.getParcelableExtra<SprintStoriesResponse>(SprintsFeedActivity.USER_STORIES_DATA)
     }
 
     private val adapter by lazy {
@@ -61,6 +72,13 @@ class StoryPointsResultsActivity : AppCompatActivity() {
                 adapter.addNewResult(resultsEstimationState.data)
                 getHighestEstimation()
             }
+
+            is UpdateUSerStoryStateSuccess -> {
+                val intent = Intent(this, UserStoriesFeedActivity::class.java)
+                //intent.putExtra(SprintsFeedActivity.USER_STORIES_DATA, sprintsList)
+                intent.putExtra(SprintsFeedActivity.CURRENT_SPRINT_ID, currentSprintId)
+                startActivity(intent)
+            }
             is ResultEstimationError -> {
                 this.toast(resultsEstimationState.error)
             }
@@ -78,13 +96,18 @@ class StoryPointsResultsActivity : AppCompatActivity() {
     }
 
     private fun getHighestEstimation() {
-       val result = adapter.calculateHighestEstimation() ?: return
+        val result = adapter.calculateHighestEstimation() ?: return
         resultTextView.text = "Estimated points for this story: ${result.storyPoints}"
     }
 
     private fun setupListeners() {
         assignPointsButton.setOnClickListener {
-            //TODO: Consume services
+            userStory?.let {
+                resultsViewModel.updateStory(
+                    pointsSelected = adapter.getHighestEstimation()?.storyPoints.toString(),
+                    storyId = it.id
+                )
+            }
         }
 
         assignItMyselfButton.setOnClickListener {
@@ -92,6 +115,7 @@ class StoryPointsResultsActivity : AppCompatActivity() {
             assignPointsContainer.isVisible = false
         }
     }
-
-    //TODO: Listen for changes
 }
+
+fun startUserStoriesFeedActivity(from: Context) =
+    from.startActivity(Intent(from, UserStoriesFeedActivity::class.java))

@@ -25,10 +25,13 @@ class SprintsFeedViewModel(
     val sprintsLiveData: LiveData<SprintsFeed>
         get() = sprintsMutableLiveData
 
+    private var currentSprintId = 0
+
     fun getSprintStories(sprintId: Int) {
         viewModelScope.launch {
             basicAuthentication.createCredentials(userRepositoryImpl.getUserCredentials())
             repository.getSprintStories(sprintId = sprintId, interceptor = basicAuthentication)
+            currentSprintId = sprintId
             when (val result = repository.getSprintStories(
                 sprintId = sprintId,
                 interceptor = basicAuthentication
@@ -48,4 +51,6 @@ class SprintsFeedViewModel(
             }
         }
     }
+
+    fun getCurrentSprintId() = currentSprintId
 }
