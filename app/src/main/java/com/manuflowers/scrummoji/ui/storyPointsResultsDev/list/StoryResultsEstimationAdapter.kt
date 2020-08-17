@@ -1,4 +1,4 @@
-package com.manuflowers.scrummoji.ui.storyResultsEstimation.list
+package com.manuflowers.scrummoji.ui.storyPointsResultsDev.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

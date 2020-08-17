@@ -1,6 +1,5 @@
 package com.manuflowers.scrummoji.ui.pointsEstimator
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,9 +12,7 @@ import com.manuflowers.scrummoji.ui.pointsEstimator.list.PointsEstimatorAdapter
 import com.manuflowers.scrummoji.ui.pointsEstimator.viewstate.PointsEstimatorError
 import com.manuflowers.scrummoji.ui.pointsEstimator.viewstate.PointsEstimatorState
 import com.manuflowers.scrummoji.ui.pointsEstimator.viewstate.SuccessFirebaseResponse
-import com.manuflowers.scrummoji.ui.storyPointsResults.StoryPointsResultsActivity
-import com.manuflowers.scrummoji.ui.storyResultsEstimation.StoryResultsEstimationActivity
-import com.manuflowers.scrummoji.ui.userStoriesFeed.UserStoriesFeedActivity
+import com.manuflowers.scrummoji.ui.storyPointsResultsDev.StoryPointsResultsDevActivity
 import com.manuflowers.scrummoji.ui.userStoriesFeed.UserStoriesFeedActivity.Companion.USER_STORY_DATA
 import com.manuflowers.scrummoji.utils.toast
 import kotlinx.android.synthetic.main.activity_points_estimator.*
@@ -78,7 +75,7 @@ class PointsEstimatorActivity : AppCompatActivity() {
 
         doneButton.setOnClickListener {
             viewModel.uploadEstimatedStory {
-                val intent = Intent(this, StoryResultsEstimationActivity::class.java)
+                val intent = Intent(this, StoryPointsResultsDevActivity::class.java)
                 intent.putExtra(
                     USER_STORY_DATA,
                     viewModel.getCurrentStory()

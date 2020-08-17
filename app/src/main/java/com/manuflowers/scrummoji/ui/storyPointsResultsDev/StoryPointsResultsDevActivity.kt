@@ -1,23 +1,23 @@
-package com.manuflowers.scrummoji.ui.storyResultsEstimation
+package com.manuflowers.scrummoji.ui.storyPointsResultsDev
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.manuflowers.scrummoji.R
 import com.manuflowers.scrummoji.data.model.UserStory
-import com.manuflowers.scrummoji.ui.storyResultsEstimation.list.StoryResultsEstimationAdapter
-import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.ResultEstimationError
-import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.ResultsEstimationState
-import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.SuccessResultEstimationListResponse
-import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.SuccessResultEstimationResponse
+import com.manuflowers.scrummoji.ui.storyPointsResultsDev.list.StoryResultsEstimationAdapter
+import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.ResultEstimationError
+import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.ResultsEstimationState
+import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.SuccessResultEstimationListResponse
+import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.SuccessResultEstimationResponse
 import com.manuflowers.scrummoji.ui.userStoriesFeed.UserStoriesFeedActivity.Companion.USER_STORY_DATA
 import com.manuflowers.scrummoji.utils.toast
 import kotlinx.android.synthetic.main.activity_story_results_estimation.*
 import org.koin.android.ext.android.inject
 
-class StoryResultsEstimationActivity : AppCompatActivity() {
+class StoryPointsResultsDevActivity : AppCompatActivity() {
 
-    private val viewModel: StoryResultsEstimationViewModel by inject()
+    private val viewModel: StoryPointsResultsDevViewModel by inject()
 
     private val userStory by lazy {
         intent.getParcelableExtra<UserStory>(USER_STORY_DATA)

@@ -1,4 +1,4 @@
-package com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate
+package com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate
 
 import com.manuflowers.scrummoji.data.model.StoryPointEstimation
 

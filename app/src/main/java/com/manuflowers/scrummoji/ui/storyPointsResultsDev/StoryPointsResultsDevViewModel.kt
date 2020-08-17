@@ -1,4 +1,4 @@
-package com.manuflowers.scrummoji.ui.storyResultsEstimation
+package com.manuflowers.scrummoji.ui.storyPointsResultsDev
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModel
 import com.manuflowers.scrummoji.data.model.Failure
 import com.manuflowers.scrummoji.data.model.Success
 import com.manuflowers.scrummoji.repository.FirebaseRepository
-import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.ResultEstimationError
-import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.ResultsEstimationState
-import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.SuccessResultEstimationListResponse
-import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.SuccessResultEstimationResponse
+import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.ResultEstimationError
+import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.ResultsEstimationState
+import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.SuccessResultEstimationListResponse
+import com.manuflowers.scrummoji.ui.storyPointsResultsDev.viewstate.SuccessResultEstimationResponse
 
-class StoryResultsEstimationViewModel(
+class StoryPointsResultsDevViewModel(
     private val firebaseRepository: FirebaseRepository
 ) : ViewModel() {
 

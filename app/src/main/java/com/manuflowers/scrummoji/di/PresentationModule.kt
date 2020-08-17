@@ -2,10 +2,9 @@ package com.manuflowers.scrummoji.di
 
 import com.manuflowers.scrummoji.ui.jiraLogin.JiraLoginViewModel
 import com.manuflowers.scrummoji.ui.pointsEstimator.PointsEstimatorViewModel
-import com.manuflowers.scrummoji.ui.roomLogin.RoomLoginActivity
 import com.manuflowers.scrummoji.ui.roomLogin.RoomLoginViewModel
 import com.manuflowers.scrummoji.ui.sprintsFeed.SprintsFeedViewModel
-import com.manuflowers.scrummoji.ui.storyResultsEstimation.StoryResultsEstimationViewModel
+import com.manuflowers.scrummoji.ui.storyPointsResultsDev.StoryPointsResultsDevViewModel
 import com.manuflowers.scrummoji.ui.userStoriesFeed.UserStoriesFeedViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -21,5 +20,5 @@ val presentationModule = module {
 
     viewModel { PointsEstimatorViewModel(get(), get(), get()) }
 
-    viewModel { StoryResultsEstimationViewModel(get()) }
+    viewModel { StoryPointsResultsDevViewModel(get()) }
 }
