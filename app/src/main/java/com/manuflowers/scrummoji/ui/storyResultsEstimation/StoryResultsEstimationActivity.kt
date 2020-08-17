@@ -6,6 +6,10 @@ import androidx.lifecycle.Observer
 import com.manuflowers.scrummoji.R
 import com.manuflowers.scrummoji.repository.UserStory
 import com.manuflowers.scrummoji.ui.storyResultsEstimation.list.StoryResultsEstimationAdapter
+import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.ResultEstimationError
+import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.ResultsEstimationState
+import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.SuccessResultEstimationListResponse
+import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.SuccessResultEstimationResponse
 import com.manuflowers.scrummoji.ui.userStoriesFeed.UserStoriesFeedActivity.Companion.USER_STORY_DATA
 import com.manuflowers.scrummoji.utils.toast
 import kotlinx.android.synthetic.main.activity_story_results_estimation.*

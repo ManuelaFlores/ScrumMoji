@@ -1,7 +1,6 @@
 package com.manuflowers.scrummoji.repository
 
 import android.os.Parcelable
-import android.util.Log
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import com.manuflowers.scrummoji.data.local.preferences.SharePreferencesManager
@@ -77,7 +76,6 @@ class FirebaseRepository(
         val childEventListener = object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
                 val result = dataSnapshot.getValue<StoryPointEstimation>() ?: return
-                Log.e("ERRRRRRRR", "$result")
                 onChildAddedListener.invoke(Success(result))
             }
 

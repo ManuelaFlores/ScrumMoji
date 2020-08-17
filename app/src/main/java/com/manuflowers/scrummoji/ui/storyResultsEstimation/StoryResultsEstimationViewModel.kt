@@ -6,7 +6,10 @@ import androidx.lifecycle.ViewModel
 import com.manuflowers.scrummoji.data.model.Failure
 import com.manuflowers.scrummoji.data.model.Success
 import com.manuflowers.scrummoji.repository.FirebaseRepository
-import com.manuflowers.scrummoji.repository.StoryPointEstimation
+import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.ResultEstimationError
+import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.ResultsEstimationState
+import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.SuccessResultEstimationListResponse
+import com.manuflowers.scrummoji.ui.storyResultsEstimation.viewstate.SuccessResultEstimationResponse
 
 class StoryResultsEstimationViewModel(
     private val firebaseRepository: FirebaseRepository
@@ -19,7 +22,7 @@ class StoryResultsEstimationViewModel(
     fun listenNewEstimationListUploaded(
         storyId: String
     ) {
-        firebaseRepository.getAllEstimationsUploaded(storyId) {result ->
+        firebaseRepository.getAllEstimationsUploaded(storyId) { result ->
             when (result) {
                 is Success -> {
                     resultsEstimationStateMutableLiveData.postValue(
@@ -49,17 +52,7 @@ class StoryResultsEstimationViewModel(
                     )
                 )
             }
-
         }
     }
 
 }
-
-sealed class ResultsEstimationState
-class SuccessResultEstimationListResponse(
-    val data: List<StoryPointEstimation>
-) : ResultsEstimationState()
-class SuccessResultEstimationResponse(
-    val data: StoryPointEstimation
-) : ResultsEstimationState()
-class ResultEstimationError(val error: String) : ResultsEstimationState()
