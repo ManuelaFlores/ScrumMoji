@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.core.view.isVisible
 import com.manuflowers.scrummoji.R
@@ -57,7 +56,6 @@ class UserStoriesFeedActivity : AppCompatActivity() {
             view.isEnabled = false
             view.isVisible = false
             viewModel.generateSessionPath { sessionId ->
-                Log.e("SESION", sessionId)
                 idSessionTextView.isVisible = true
                 idSessionTextView.text = getString(R.string.session_id_v1, sessionId)
                 copyButton.isVisible = true
@@ -70,7 +68,9 @@ class UserStoriesFeedActivity : AppCompatActivity() {
     private fun copySessionId() {
         val myClipboard = this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager?
 
-        val myClip = ClipData.newPlainText(SESSION_ID, idSessionTextView.text)
+        val roomId = idSessionTextView.text.toString().substringAfter(':')
+
+        val myClip = ClipData.newPlainText(SESSION_ID, roomId.trim())
         myClipboard?.setPrimaryClip(myClip)
         this.toast(getString(R.string.session_id_copied))
     }
