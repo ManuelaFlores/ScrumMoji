@@ -11,4 +11,11 @@
     <string name="emoji_assigned_to_the_card">Emoji assigned to the card</string>
     <string name="icon_close">icon close</string>
     <string name="done">Done</string>
+    <string name="sprints_feed">Sprints Feed</string>
+    <string name="user_stories_feed">User Stories Feed</string>
+    <string name="scrum_master_login">Scrum Master\'s Login</string>
+    <string name="developer_login">Delveloper\'s Login</string>
+    <string name="developer">Developer</string>
+    <string name="who_are_you">Who are you?</string>
+    <string name="scrum_master">Scrum Master</string>
 </resources>

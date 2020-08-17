@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.lifecycle.Observer
 import com.manuflowers.scrummoji.R
 import com.manuflowers.scrummoji.ui.pointsEstimator.PointsEstimatorActivity
@@ -18,6 +19,7 @@ class RoomLoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_room_login)
+        setSupportActionBar(roomLoginToolbar)
         setupListeners()
         subscribeToData()
     }
@@ -74,6 +76,16 @@ class RoomLoginActivity : AppCompatActivity() {
 
     private fun removeRoomIdError() {
         roomIdTextInputLayout.error = null
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
 

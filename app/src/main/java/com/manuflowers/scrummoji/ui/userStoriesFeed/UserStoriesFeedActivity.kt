@@ -7,6 +7,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.core.view.isVisible
 import com.manuflowers.scrummoji.R
 import com.manuflowers.scrummoji.data.model.SprintStoriesResponse
@@ -33,6 +34,7 @@ class UserStoriesFeedActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_stories_feed)
         setupAdapter()
         setupListeners()
+        setSupportActionBar(userStoriesFeedToolbar)
     }
 
     private fun setupAdapter() {
@@ -71,6 +73,16 @@ class UserStoriesFeedActivity : AppCompatActivity() {
         val myClip = ClipData.newPlainText(SESSION_ID, idSessionTextView.text)
         myClipboard?.setPrimaryClip(myClip)
         this.toast(getString(R.string.session_id_copied))
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     companion object {

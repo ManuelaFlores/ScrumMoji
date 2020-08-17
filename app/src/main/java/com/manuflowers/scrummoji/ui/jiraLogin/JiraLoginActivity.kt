@@ -3,6 +3,7 @@ package com.manuflowers.scrummoji.ui.jiraLogin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.lifecycle.Observer
 import com.manuflowers.scrummoji.R
 import com.manuflowers.scrummoji.ui.jiraLogin.viewstate.JiraLoginError
@@ -21,6 +22,7 @@ class JiraLoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_jira_login)
         setupListeners()
         setupObservers()
+        setSupportActionBar(jiraLoginToolbar)
     }
 
     private fun setupObservers() {
@@ -50,6 +52,16 @@ class JiraLoginActivity : AppCompatActivity() {
 
     private fun getPasswordData(): String {
         return passwordEditText.text?.trim().toString()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     companion object {

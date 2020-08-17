@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:id="@+id/sprintTextView"
-    android:layout_height="80dp"
-    android:gravity="center_vertical"
-    android:padding="8dp"
-    android:background="?attr/selectableItemBackground"
-    android:textSize="24sp"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:text="Sprint 1" />
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:padding="@dimen/padding_half"
+    app:cardUseCompatPadding="true">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/sprintTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:textSize="24sp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textColor="@android:color/black"
+        tools:text="Sprint 1" />
+
+</androidx.cardview.widget.CardView>
