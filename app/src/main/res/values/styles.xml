@@ -16,4 +16,14 @@
         <item name="android:background">@color/backgroundActivity</item>
     </style>
 
+    <style name="PointsEstimatorTitle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="CardSelectedBaseStyle">
+        <item name="android:textColor">@color/cardTextColor</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
