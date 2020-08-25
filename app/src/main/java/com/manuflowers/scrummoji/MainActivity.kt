@@ -1,25 +1,33 @@
 package com.manuflowers.scrummoji
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.manuflowers.scrummoji.ui.jiraLogin.JiraLoginActivity
+import com.manuflowers.scrummoji.ui.roomLogin.RoomLoginActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
-    private val jiraRepositoryImpl = JiraRepositoryImpl(buildApiService())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        prueba()
+        setupListeners()
     }
 
-    fun prueba() {
-        GlobalScope.launch {
-            val response = jiraRepositoryImpl.getSprints()
-            Log.e("RESPONSE", "${response.values}")
+    private fun setupListeners() {
+        scrumMasterButton.setOnClickListener {
+            startJiraLoginActivity(this)
+        }
+
+        developerButton.setOnClickListener {
+            startRoomLoginActivity(this)
         }
     }
+
+    //para la pantalla del developer mostrar una pantalla cargando y pasarla cuando se suban todas las queries
 }
+
+fun startJiraLoginActivity(from: Context) = from.startActivity(Intent(from, JiraLoginActivity::class.java))
+fun startRoomLoginActivity(from: Context) = from.startActivity(Intent(from, RoomLoginActivity::class.java))

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_layout_margin">8dp</dimen>
+    <dimen name="margin_standard">16dp</dimen>
+    <dimen name="padding_standard">16dp</dimen>
+    <dimen name="margin_half">8dp</dimen>
+    <dimen name="padding_half">8dp</dimen>
+    <dimen name="margin_once_and_a_half">24dp</dimen>
+    <dimen name="card_selected_margin_size">36dp</dimen>
+    <dimen name="emoji_size">80dp</dimen>
+    <dimen name="emoji_selected_size">200dp</dimen>
+</resources>
