@@ -16,14 +16,20 @@ class ScrumMojiApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@ScrumMojiApplication)
-            modules(
-                listOf(
-                    applicationModule,
-                    networkModule,
-                    repositoryModule,
-                    presentationModule
-                )
-            )
+            modules(appModules + repositoryModules)
         }
     }
 }
+
+val appModules = listOf(
+    applicationModule,
+    networkModule,
+    repositoryModule,
+    presentationModule
+)
+
+val repositoryModules = listOf(
+    com.manuflowers.data.di.repositoryModule,
+    com.manuflowers.data.di.networkModule
+)
+
