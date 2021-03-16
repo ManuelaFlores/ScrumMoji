@@ -1,4 +1,4 @@
-package com.manuflowers.data.remote.session.interceptor
+package com.manuflowers.data.remote.jira.interceptor
 
 import com.manuflowers.data.repository.session.model.UserCredentialEntity
 import okhttp3.Credentials

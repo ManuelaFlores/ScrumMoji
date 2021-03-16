@@ -10,10 +10,13 @@ sealed class Result<out R> {
         val message: String = ""
     ) : Result<Nothing>()
 
+    object NetworkError: Result<Nothing>()
+
     override fun toString(): String {
         return when (this) {
             is Success<*> -> "Success[data=$data]"
             is Error -> "Error[internalCode=$internalCode, messageCode=$messageCode, message=$message"
+            is NetworkError -> "NetworkError"
         }
     }
 }

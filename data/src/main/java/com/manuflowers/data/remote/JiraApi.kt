@@ -1,6 +1,7 @@
 package com.manuflowers.data.remote
 
 import com.manuflowers.data.repository.sprints.model.SprintsEntity
+import retrofit2.Response
 import retrofit2.http.*
 
 interface JiraApi {
