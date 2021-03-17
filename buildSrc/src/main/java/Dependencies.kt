@@ -58,6 +58,14 @@ object Dependencies {
 
     val firebase_analytics = "com.google.firebase:firebase-analytics:${Versions.firebase_analytics}"
     val firebase_core = "com.google.firebase:firebase-core:${Versions.firebase_core}"
-    val firebase_database = "com.google.firebase:firebase-database-ktx:${Versions.firebase_database}"
+    val firebase_database =
+        "com.google.firebase:firebase-database-ktx:${Versions.firebase_database}"
 
+}
+
+object Config {
+    val compileSdk = 30
+    val minSdk = 23
+    val targetSdk = 30
+    val javaVersion = 1.8
 }
