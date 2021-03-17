@@ -1,5 +1,9 @@
 package com.manuflowers.domain.sprints
 
-interface SprintsRepository {
+import com.manuflowers.domain.sprints.models.SprintsEntity
+import com.manuflowers.domain.sprints.models.UserCredentialEntity
+import com.manuflowers.domain.utils.Result
 
+interface SprintsRepository {
+    suspend fun getSprints(userCredentialEntity: UserCredentialEntity): Result<SprintsEntity>
 }

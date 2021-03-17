@@ -1,13 +1,13 @@
 package com.manuflowers.domain.sprints.models
 
-data class SprintsModel(
+data class SprintsEntity(
     val maxResults: Int,
     val startAt: String,
     val isLast: Boolean,
-    val values: List<SprintModel>
+    val values: List<SprintEntity>
 )
 
-data class SprintModel(
+data class SprintEntity(
     val id: Int,
     val self: String,
     val state: String,

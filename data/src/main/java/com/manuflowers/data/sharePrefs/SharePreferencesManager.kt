@@ -1,7 +1,7 @@
 package com.manuflowers.data.sharePrefs
 
 import android.content.SharedPreferences
-import com.manuflowers.data.repository.sprints.model.UserCredentialEntity
+import com.manuflowers.data.repository.sprints.model.UserCredentialData
 
 class SharePreferencesManager(
     private val preferences: SharedPreferences
@@ -11,7 +11,7 @@ class SharePreferencesManager(
         preferences.edit().putString(KEY_USER_PASSWORD, password).apply()
     }
 
-    fun getUserCredentials() = UserCredentialEntity(
+    fun getUserCredentials() = UserCredentialData(
         userName = preferences.getString(KEY_USER_EMAIL, "") ?: "",
         password = preferences.getString(KEY_USER_PASSWORD, "") ?: ""
     )

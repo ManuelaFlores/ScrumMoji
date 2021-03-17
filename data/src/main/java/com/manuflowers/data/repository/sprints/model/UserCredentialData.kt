@@ -1,6 +1,6 @@
 package com.manuflowers.data.repository.sprints.model
 
-data class UserCredentialEntity(
+data class UserCredentialData(
     val userName: String,
     val password: String
 )

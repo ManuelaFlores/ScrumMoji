@@ -1,6 +1,6 @@
 package com.manuflowers.data.remote.jira.interceptor
 
-import com.manuflowers.data.repository.sprints.model.UserCredentialEntity
+import com.manuflowers.data.repository.sprints.model.UserCredentialData
 import okhttp3.Credentials
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -10,7 +10,7 @@ class BasicAuthentication : Interceptor {
     private var userName = ""
     private var password = ""
 
-    fun createCredentials(userCredential: UserCredentialEntity) {
+    fun createCredentials(userCredential: UserCredentialData) {
         this.userName = userCredential.userName
         this.password = userCredential.password
     }

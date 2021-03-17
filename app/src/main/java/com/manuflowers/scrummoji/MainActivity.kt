@@ -6,9 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
-import com.manuflowers.data.repository.sprints.model.UserCredentialEntity
+import com.manuflowers.data.repository.sprints.model.UserCredentialData
 import com.manuflowers.data.repository.sprints.source.SprintsDataSource
-import com.manuflowers.data.repository.sprints.source.remote.SprintsRemoteDataSource
 import com.manuflowers.scrummoji.ui.jiraLogin.JiraLoginActivity
 import com.manuflowers.scrummoji.ui.roomLogin.RoomLoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -39,9 +38,9 @@ class MainActivity : AppCompatActivity() {
                 "EEEEEEEEE",
                 "${
                     repository.getSprints(
-                        UserCredentialEntity(
+                        UserCredentialData(
                             "fmanuela499@gmail.com",
-                            "-----"
+                            "EvSdiVb8c5V8o8QkFuJDEF5E"
                         )
                     )
                 }"
