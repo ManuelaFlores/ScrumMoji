@@ -3,7 +3,7 @@ package com.manuflowers.data.remote.session
 import com.google.firebase.database.DatabaseReference
 
 class SessionRemoteImpl(
-    private val databaseReference: DatabaseReference,
+    private val databaseReference: DatabaseReference
 ) : SessionRemote {
 
     //"${Calendar.getInstance().time}"

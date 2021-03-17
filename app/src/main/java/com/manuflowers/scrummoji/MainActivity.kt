@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                     useCase.getSprints(
                         UserCredentialData(
                             "fmanuela499@gmail.com",
-                            ""
+                            "EvSdiVb8c5V8o8QkFuJDEF5E"
                         ).toDomain()
                     )
                 }"
