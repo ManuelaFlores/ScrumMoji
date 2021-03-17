@@ -1,17 +1,16 @@
 package com.manuflowers.data.di
 
-import android.content.Context
-import com.manuflowers.data.remote.session.SessionRemote
-import com.manuflowers.data.remote.session.SessionRemoteImpl
-import com.manuflowers.data.repository.session.SessionRepositoryImpl
+import com.manuflowers.data.repository.sprints.SprintsRepositoryImpl
 import com.manuflowers.data.repository.sprints.source.SprintsDataSource
 import com.manuflowers.data.repository.sprints.source.remote.SprintsRemoteDataSource
-import org.koin.android.ext.koin.androidContext
+import com.manuflowers.domain.sprints.SprintsRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
 
     single<SprintsDataSource> { SprintsRemoteDataSource(get()) }
+
+    single<SprintsRepository> { SprintsRepositoryImpl(get()) }
 
     /*single<SessionRemote> { SessionRemoteImpl(
         databaseReference = get()

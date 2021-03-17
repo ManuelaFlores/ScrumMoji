@@ -7,7 +7,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.manuflowers.data.repository.sprints.model.UserCredentialData
-import com.manuflowers.data.repository.sprints.source.SprintsDataSource
+import com.manuflowers.data.repository.sprints.model.toDomain
+import com.manuflowers.domain.sprints.SprintsRepository
 import com.manuflowers.scrummoji.ui.jiraLogin.JiraLoginActivity
 import com.manuflowers.scrummoji.ui.roomLogin.RoomLoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,7 +17,7 @@ import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
-    val repository: SprintsDataSource by inject()
+    val repository: SprintsRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,13 +42,11 @@ class MainActivity : AppCompatActivity() {
                         UserCredentialData(
                             "fmanuela499@gmail.com",
                             "EvSdiVb8c5V8o8QkFuJDEF5E"
-                        )
+                        ).toDomain()
                     )
                 }"
             )
         }
-
-
     }
 
     //para la pantalla del developer mostrar una pantalla cargando y pasarla cuando se suban todas las queries
