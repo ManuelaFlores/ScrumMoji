@@ -23,3 +23,5 @@ interface JiraApi {
 
 const val BASE_URL = "https://manumobileteam.atlassian.net/rest/agile/1.0/"
 const val HISTORIES_URL = ""
+
+const val NEW_URL = "https://manumobileteam.atlassian.net/rest/api/2/<resource-name>"
