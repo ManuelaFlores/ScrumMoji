@@ -4,12 +4,16 @@ import android.content.Context
 import com.manuflowers.data.remote.session.SessionRemote
 import com.manuflowers.data.remote.session.SessionRemoteImpl
 import com.manuflowers.data.repository.session.SessionRepositoryImpl
+import com.manuflowers.data.repository.sprints.source.SprintsDataSource
+import com.manuflowers.data.repository.sprints.source.remote.SprintsRemoteDataSource
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 val repositoryModule = module {
 
-    single<SessionRemote> { SessionRemoteImpl(
+    single<SprintsDataSource> { SprintsRemoteDataSource(get()) }
+
+    /*single<SessionRemote> { SessionRemoteImpl(
         databaseReference = get()
     ) }
 
@@ -18,5 +22,5 @@ val repositoryModule = module {
     single { SessionRepositoryImpl(
         sessionRemote = get() ,
         sharePreferencesManager = get()
-    ) }
+    ) }*/
 }

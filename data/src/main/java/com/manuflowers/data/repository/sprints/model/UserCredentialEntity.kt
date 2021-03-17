@@ -1,4 +1,4 @@
-package com.manuflowers.data.repository.session.model
+package com.manuflowers.data.repository.sprints.model
 
 data class UserCredentialEntity(
     val userName: String,

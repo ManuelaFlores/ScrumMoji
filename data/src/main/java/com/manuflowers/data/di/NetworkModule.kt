@@ -1,29 +1,27 @@
 package com.manuflowers.data.di
 
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import com.manuflowers.data.remote.JiraApi
-import okhttp3.Interceptor
+import com.manuflowers.data.repository.sprints.source.SprintsDataSource
+import com.manuflowers.data.repository.sprints.source.remote.SprintsRemoteDataSource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-
 val networkModule = module {
 
-    single { buildClient(get()) }
+    single { buildClient() }
 
     single { buildRetrofit(get(), BASE_URL) }
 
-    single { Firebase.database.reference }
+    single { buildApiJiraService() }
 }
 
 const val BASE_URL = "https://manumobileteam.atlassian.net/rest/agile/1.0/"
 
-fun buildApiJiraService(interceptor: Interceptor): JiraApi =
-    buildRetrofit(buildClient(interceptor), BASE_URL).create(JiraApi::class.java)
+fun buildApiJiraService(): JiraApi =
+    buildRetrofit(buildClient(), BASE_URL).create(JiraApi::class.java)
 
 private fun buildRetrofit(client: OkHttpClient, baseUrl: String): Retrofit {
     return Retrofit.Builder()
@@ -33,11 +31,10 @@ private fun buildRetrofit(client: OkHttpClient, baseUrl: String): Retrofit {
         .build()
 }
 
-private fun buildClient(interceptor: Interceptor): OkHttpClient {
+private fun buildClient(): OkHttpClient {
     return OkHttpClient.Builder()
         .addInterceptor(HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         })
-        .addInterceptor(interceptor)
         .build()
 }

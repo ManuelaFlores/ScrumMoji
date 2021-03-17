@@ -1,7 +1,7 @@
 package com.manuflowers.data.sharePrefs
 
 import android.content.SharedPreferences
-import com.manuflowers.data.repository.session.model.UserCredentialEntity
+import com.manuflowers.data.repository.sprints.model.UserCredentialEntity
 
 class SharePreferencesManager(
     private val preferences: SharedPreferences
