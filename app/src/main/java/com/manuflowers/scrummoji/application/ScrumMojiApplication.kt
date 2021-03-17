@@ -16,7 +16,7 @@ class ScrumMojiApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@ScrumMojiApplication)
-            modules(appModules + repositoryModules)
+            modules(appModules + repositoryModules + useCasesModule)
         }
     }
 }
@@ -32,4 +32,6 @@ val repositoryModules = listOf(
     com.manuflowers.data.di.repositoryModule,
     com.manuflowers.data.di.networkModule
 )
+
+val useCasesModule = com.manuflowers.domain.di.useCasesModule
 
