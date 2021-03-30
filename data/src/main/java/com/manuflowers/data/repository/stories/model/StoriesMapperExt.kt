@@ -1,8 +1,6 @@
 package com.manuflowers.data.repository.stories.model
 
-import com.manuflowers.domain.stories.model.FieldsEntity
-import com.manuflowers.domain.stories.model.IssueEntity
-import com.manuflowers.domain.stories.model.StoriesEntity
+import com.manuflowers.domain.stories.model.*
 
 fun StoriesEntity.toData() = StoriesData(
     maxResults = this.maxResults,
@@ -22,6 +20,15 @@ fun FieldsEntity.toData() = FieldsData(
     storyTitle = this.storyTitle
 )
 
+fun StoryEntity.toData() = StoryData(
+    fieldId = this.fieldId,
+    value = this.value
+)
+
+fun StoryValueEntity.toData() = StoryValueData(
+    value = this.value
+)
+
 fun StoriesData.toEntity() = StoriesEntity(
     maxResults = this.maxResults,
     total = this.total,
@@ -38,4 +45,13 @@ fun FieldsData.toEntity() = FieldsEntity(
     storyPointEstimate = this.storyPointEstimate ?: 0.0,
     storyDescription = this.storyDescription ?: "",
     storyTitle = this.storyTitle ?: ""
+)
+
+fun StoryData.toEntity() = StoryEntity(
+    fieldId = this.fieldId,
+    value = this.value
+)
+
+fun StoryValueData.toEntity() = StoryValueEntity(
+    value = this.value
 )
