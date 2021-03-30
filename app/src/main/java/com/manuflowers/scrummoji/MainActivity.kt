@@ -10,6 +10,7 @@ import com.manuflowers.data.repository.sprints.model.UserCredentialData
 import com.manuflowers.data.repository.sprints.model.toDomain
 import com.manuflowers.domain.sprints.GetSprintsUseCase
 import com.manuflowers.domain.sprints.SprintsRepository
+import com.manuflowers.domain.stories.GetStoriesUseCase
 import com.manuflowers.scrummoji.ui.jiraLogin.JiraLoginActivity
 import com.manuflowers.scrummoji.ui.roomLogin.RoomLoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,7 +19,9 @@ import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
-    val useCase: GetSprintsUseCase by inject()
+    val getSprintsUseCase: GetSprintsUseCase by inject()
+    val getStoriesUseCase: GetStoriesUseCase by inject()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,9 +40,21 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             Log.e(
-                "EEEEEEEEE",
+                "SPRINTS",
                 "${
-                    useCase.getSprints(
+                    getSprintsUseCase.getSprints(
+                        UserCredentialData(
+                            "fmanuela499@gmail.com",
+                            "EvSdiVb8c5V8o8QkFuJDEF5E"
+                        ).toDomain()
+                    )
+                }"
+            )
+            Log.e(
+                "STORIES",
+                "${
+                    getStoriesUseCase.getStories(
+                        1,
                         UserCredentialData(
                             "fmanuela499@gmail.com",
                             "EvSdiVb8c5V8o8QkFuJDEF5E"

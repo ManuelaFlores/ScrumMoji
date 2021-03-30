@@ -4,8 +4,8 @@ import com.manuflowers.data.repository.sprints.model.toData
 import com.manuflowers.data.repository.sprints.model.toEntity
 import com.manuflowers.data.repository.sprints.source.SprintsDataSource
 import com.manuflowers.domain.sprints.SprintsRepository
-import com.manuflowers.domain.sprints.models.SprintsEntity
-import com.manuflowers.domain.sprints.models.UserCredentialEntity
+import com.manuflowers.domain.sprints.model.SprintsEntity
+import com.manuflowers.domain.sprints.model.UserCredentialEntity
 import com.manuflowers.domain.utils.Result
 
 class SprintsRepositoryImpl(

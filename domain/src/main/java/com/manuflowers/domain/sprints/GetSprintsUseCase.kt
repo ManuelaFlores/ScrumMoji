@@ -1,7 +1,7 @@
 package com.manuflowers.domain.sprints
 
-import com.manuflowers.domain.sprints.models.SprintsEntity
-import com.manuflowers.domain.sprints.models.UserCredentialEntity
+import com.manuflowers.domain.sprints.model.SprintsEntity
+import com.manuflowers.domain.sprints.model.UserCredentialEntity
 import com.manuflowers.domain.utils.Result
 
 class GetSprintsUseCase(

@@ -1,8 +1,8 @@
 package com.manuflowers.data.repository.sprints.model
 
-import com.manuflowers.domain.sprints.models.SprintEntity
-import com.manuflowers.domain.sprints.models.SprintsEntity
-import com.manuflowers.domain.sprints.models.UserCredentialEntity
+import com.manuflowers.domain.sprints.model.SprintEntity
+import com.manuflowers.domain.sprints.model.SprintsEntity
+import com.manuflowers.domain.sprints.model.UserCredentialEntity
 
 fun UserCredentialEntity.toData(): UserCredentialData = UserCredentialData(
     userName = this.userName,
