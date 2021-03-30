@@ -11,6 +11,8 @@ import com.manuflowers.data.repository.sprints.model.toDomain
 import com.manuflowers.domain.sprints.GetSprintsUseCase
 import com.manuflowers.domain.sprints.SprintsRepository
 import com.manuflowers.domain.stories.GetStoriesUseCase
+import com.manuflowers.domain.stories.UpdateStoryUseCase
+import com.manuflowers.domain.stories.model.StoryValueEntity
 import com.manuflowers.scrummoji.ui.jiraLogin.JiraLoginActivity
 import com.manuflowers.scrummoji.ui.roomLogin.RoomLoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,8 +21,9 @@ import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
-    val getSprintsUseCase: GetSprintsUseCase by inject()
-    val getStoriesUseCase: GetStoriesUseCase by inject()
+    private val getSprintsUseCase: GetSprintsUseCase by inject()
+    private val getStoriesUseCase: GetStoriesUseCase by inject()
+    private val updateStoryUseCase: UpdateStoryUseCase by inject()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,6 +62,20 @@ class MainActivity : AppCompatActivity() {
                             "fmanuela499@gmail.com",
                             "EvSdiVb8c5V8o8QkFuJDEF5E"
                         ).toDomain()
+                    )
+                }"
+            )
+            Log.e(
+                "STORY_UPDATE",
+                "${
+                    updateStoryUseCase.updateStory(
+                        UserCredentialData(
+                            "fmanuela499@gmail.com",
+                            "EvSdiVb8c5V8o8QkFuJDEF5E"
+                        ).toDomain(),
+                        storyId = "10000",
+                        boardId = 1,
+                        storyValueEntity = StoryValueEntity("8")
                     )
                 }"
             )
