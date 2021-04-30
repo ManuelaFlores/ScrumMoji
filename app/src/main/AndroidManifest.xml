@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.storyPointsResultsDev.StoryPointsResultsDevActivity"></activity>
+        <activity android:name=".ui.storyPointsResultsDev.StoryPointsResultsDevActivity" />
         <activity android:name=".ui.pointsEstimator.PointsEstimatorActivity" />
         <activity android:name=".ui.storyPointsResultsSM.StoryPointsResultsActivity" />
         <activity android:name=".ui.userStoriesFeed.UserStoriesFeedActivity" />

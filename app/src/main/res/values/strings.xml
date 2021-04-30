@@ -24,4 +24,7 @@
     <string name="assign_it_myself">Assign it myself</string>
     <string name="assign_your_points">Assign your points</string>
     <string name="next_story">Next Story</string>
+    <string name="login_title">SCRUMMOJI</string>
+    <string name="alias_hint">Alias</string>
+    <string name="enter">Ingresar</string>
 </resources>
